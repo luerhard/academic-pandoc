@@ -35,7 +35,7 @@ toc: false # Table of contents
 
 # Introduction
  
-This is my super important Article. This is me ! 
+This is my super important Article. This is me ! Me 2
 
 I can do it twice ! cool !
 I will reference multiple stuff here [@jones2016].

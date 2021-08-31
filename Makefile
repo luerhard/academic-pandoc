@@ -32,7 +32,7 @@ pdf:
 
 .ONESHELL:
 diff:	
-	pandoc $(args_pandoc_tex) --metadata link-citations=false -o out/main.tex $(MD_FILES)
+	pandoc $(md_to_tex_args) --metadata link-citations=false -o out/main.tex $(MD_FILES)
 	
 	@OLD_FILES=$(nullstring)
 	@for file in $(MD_FILES); do \
