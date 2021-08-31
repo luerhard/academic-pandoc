@@ -8,7 +8,7 @@ DOCX_FILTERS = -F rsc/filters/numbering.py
 LATEX_FILTERS = -F rsc/filters/authors_helper.py -F pandoc-fignos -F pandoc-secnos -F rsc/filters/appendix.py
 
 LATEX_TEMPLATE = rsc/templates/template.tex
-DOCX_TEMPLATE = --reference-doc rsc/templates/template.docx
+DOCX_TEMPLATE = rsc/templates/template.docx
 
 
 
