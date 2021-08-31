@@ -3,14 +3,16 @@ all: pdf docx clean
 
 depth ?= 1
 MD_FILES ?= report/main.md report/appendix.md
+
 DOCX_FILTERS = -F rsc/filters/numbering.py
 LATEX_FILTERS = -F rsc/filters/authors_helper.py -F pandoc-fignos -F pandoc-secnos -F rsc/filters/appendix.py
+
 LATEX_TEMPLATE = rsc/templates/template.tex
 DOCX_TEMPLATE = --reference-doc rsc/templates/template.docx
 
 
 
-md_to_tex_args := -f markdown -t latex -s  --template ${LATEX_TEMPLATE} --pdf-engine pdflatex  ${FILTERS} --citeproc
+md_to_tex_args := -f markdown -t latex -s  --template ${LATEX_TEMPLATE} --pdf-engine pdflatex $(LATEX_FILTERS) --citeproc
 tex_to_docx_args := -f latex -t docx -s --reference-doc ${DOCX_TEMPLATE} ${DOCX_FILTERS}
 pdflatex_args := -interaction batchmode -output-directory=out/ out/main.tex
 
@@ -38,7 +40,7 @@ diff:
 		git show HEAD~$(depth):$$file > $$OLD; \
 		OLD_FILES="$$OLD_FILES $$OLD"; \
 	done
-	pandoc -o out/main_old.tex $$OLD_FILES
+	pandoc ${md_to_tex_args} -o out/main_old.tex report/main_old.md report/appendix_old.md
 	latexdiff out/main_old.tex out/main.tex > out/diff.tex
 	pdflatex $(pdflatex_args)
 	pdflatex $(pdflatex_args)

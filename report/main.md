@@ -1,7 +1,7 @@
 ---
 # Bibliography
-csl: ./resources/library/apa.csl # See https://www.zotero.org/styles for more styles.
-bibliography: ./resources/library/references.bib
+csl: ./rsc/library/apa.csl # See https://www.zotero.org/styles for more styles.
+bibliography: ./rsc/library/references.bib
 
 title: 'My academic Paper2'
 
@@ -45,7 +45,7 @@ Hier is some todo\todo{Important, findest du nicht auch?, das scheint doch super
 
 What is this?
 
-![Desc](resources/images/cat.jpg){#fig:id .center}
+![Desc](rsc/images/cat.jpg){#fig:id .center}
 
 # Methods {#sec:methods}
 
