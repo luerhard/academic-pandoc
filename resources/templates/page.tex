@@ -1,0 +1,76 @@
+%%%% Create MSWord linestretch
+% START
+\makeatletter
+\newcommand{\MSonehalfspacing}{%
+	\setstretch{1.44}%  default
+	\ifcase \@ptsize \relax % 10pt
+	\setstretch {1.448}%
+	\or % 11pt
+	\setstretch {1.399}%
+	\or % 12pt
+	\setstretch {1.433}%
+	\fi
+}
+
+\newcommand{\MSdoublespacing}{%
+	\setstretch {1.92}%  default
+	\ifcase \@ptsize \relax % 10pt
+	\setstretch {1.936}%
+	\or % 11pt
+	\setstretch {1.866}%
+	\or % 12pt
+	\setstretch {1.902}%
+	\fi
+}
+\newcommand{\MSverbatimspacing}{%
+	\setstretch{1.44}%  default
+	\ifcase \@ptsize \relax % 10pt
+	\setstretch {1}%
+	\or % 11pt
+	\setstretch {1}%
+	\or % 12pt
+	\setstretch {1}%
+	\fi
+}
+\makeatother
+%END
+
+
+%important for numbered figures
+% START
+\makeatletter
+\newcounter{figno}
+\newenvironment{fignos:no-prefix-figure-caption}{
+	\caption@ifcompatibility{}{
+		\let\oldthefigure\thefigure
+		\let\oldtheHfigure\theHfigure
+		\renewcommand{\thefigure}{figno:\thefigno}
+		\renewcommand{\theHfigure}{figno:\thefigno}
+		\stepcounter{figno}
+		\captionsetup{labelformat=empty}
+	}
+}{
+	\caption@ifcompatibility{}{
+		\captionsetup{labelformat=default}
+		\let\thefigure\oldthefigure
+		\let\theHfigure\oldtheHfigure
+		\addtocounter{figure}{-1}
+	}
+}
+\makeatother
+% END
+
+% Create special environment for tables in the appendix
+\newenvironment{appendixtab}{
+	\singlespacing
+	\setlength{\extrarowheight}{0.1cm}
+	\fontsize{5}{1}
+}{}
+
+
+%make todonotes smaller and with less linespacing
+\makeatletter
+\renewcommand{\todo}[2][]{%
+	\@todo[caption={#2}, #1]{\begin{spacing}{0.5}#2\end{spacing}}%
+} 
+\makeatother

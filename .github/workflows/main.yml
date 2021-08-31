@@ -1,0 +1,29 @@
+name: Create PDF
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  create_pdf:
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+          ref: main
+
+      - run: mkdir -p out/
+
+      - name: Create PDF
+        uses: docker://lerhard/pandoc:latest
+        with:
+          entrypoint: "docker/entrypoint.sh"
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: out
+          path: out/

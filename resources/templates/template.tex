@@ -1,0 +1,121 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{appendix}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{authblk}
+\usepackage{setspace}
+\setlength{\marginparwidth }{2cm}
+\usepackage[textwidth=4.5cm, tickmarkheight=0.2cm, textsize=footnotesize]{todonotes}
+\floatplacement{figure}{$if(float-placement-figure)$$float-placement-figure$$else$H$endif$}
+
+\usepackage[
+left=2cm,
+right=5cm,
+top=3cm,
+bottom=3cm
+%marginparwidth=125pt,
+%marginparsep=5mm,
+]{geometry}
+
+\input{resources/templates/page}
+
+
+
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\newlength{\cslparskip}
+
+% Set References Layout here:
+\setlength{\cslhangindent}{1em}
+\setlength{\cslparskip}{1em}
+
+\input{resources/templates/csl-style}
+$endif$ 
+
+%Minimum Anteil für eine Float-Only Page (Standard .6)
+\renewcommand{\floatpagefraction}{.3}
+\renewcommand{\textfraction}{.4} 
+
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
+
+\MSonehalfspacing
+
+
+$if(title)$
+\title{$title$}
+$endif$
+
+\usepackage{authblk}
+$for(authors)$
+\author[$for(authors.institute)$$authors.institute$$sep$,$endfor$]{$authors.name$%
+	$if(authors.correspondence)$%
+	$if(authors.email)$%
+	\textsuperscript{*\,}%
+    $endif$%
+    $endif$%
+}%
+$endfor$
+
+$for(institute)$
+\affil[$institute.index$]{$institute.name$}
+$endfor$
+
+\date{$date$}
+
+\makeatletter
+\def\@maketitle{%
+	\newpage \null \vskip 2em
+	\begin {center}%
+	{\LARGE \@title \par}%
+	\vskip 1.5em%
+	{\large \lineskip .5em%
+		\begin {tabular}[t]{c}%
+		\@author
+		\end {tabular}\par}%
+	$if(correspondence)$
+	\vskip 0.2em{\textsuperscript{*}\,Correspondence:
+		$for(authors)$$if(authors.correspondence)$$if(authors.email)$
+		$authors.name$ <$authors.email$>\\
+		$endif$$endif$$endfor$}%
+	%$endif$
+	\vskip 1em{\large \@date}%
+	\end {center}%
+	\par
+	\vskip 1.5em}
+\makeatother
+
+\begin{document}
+	
+$if(titlepage)$
+\newgeometry{margin=2.5cm}
+\maketitle
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+\thispagestyle{empty}
+\restoregeometry
+\newpage
+$endif$
+
+$if(toc)$
+\newpage
+\tableofcontents
+\newpage
+$endif$
+
+$body$
+
+
+\end{document}

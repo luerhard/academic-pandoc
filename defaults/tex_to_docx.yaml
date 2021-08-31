@@ -1,0 +1,13 @@
+file-scope: false # Parse each file individually before combining for multifile documents. This will allow footnotes in different files with the same identifiers to work as expected. If this option is set, footnotes and links will not work across files.
+from: latex
+highlight-style: pygments
+input-files: [out/main.tex]
+output-file: out/main.docx
+filters:
+    - resources/filters/numbering.py
+reference-doc: resources/templates/template.docx
+reference-location: block # block, section, or document
+resource-path: [resources]
+standalone: true
+to: docx
+top-level-division: section # part, chapter, section, or default:
