@@ -14,7 +14,7 @@ DOCX_TEMPLATE = --reference-doc rsc/templates/template.docx
 
 md_to_tex_args := -f markdown -t latex -s  --template ${LATEX_TEMPLATE} --pdf-engine pdflatex $(LATEX_FILTERS) --citeproc
 tex_to_docx_args := -f latex -t docx -s --reference-doc ${DOCX_TEMPLATE} ${DOCX_FILTERS}
-pdflatex_args := -interaction batchmode -output-directory=out/ out/main.tex
+pdflatex_args := -interaction batchmode -output-directory=out/ 
 
 
 latex:
@@ -27,8 +27,8 @@ docx:
 
 pdf:
 	pandoc $(md_to_tex_args) --metadata link-citations=true -o out/main.tex $(MD_FILES)
-	pdflatex $(pdflatex_args)
-	pdflatex $(pdflatex_args)
+	pdflatex $(pdflatex_args) out/main.tex
+	pdflatex $(pdflatex_args) out/main.tex
 
 .ONESHELL:
 diff:	
@@ -40,10 +40,11 @@ diff:
 		git show HEAD~$(depth):$$file > $$OLD; \
 		OLD_FILES="$$OLD_FILES $$OLD"; \
 	done
-	pandoc ${md_to_tex_args} -o out/main_old.tex report/main_old.md report/appendix_old.md
+	pandoc ${md_to_tex_args} -o out/main_old.tex $$OLD_FILES
 	latexdiff out/main_old.tex out/main.tex > out/diff.tex
-	pdflatex $(pdflatex_args)
-	pdflatex $(pdflatex_args)
+	pdflatex $(pdflatex_args) out/diff.tex
+	pdflatex $(pdflatex_args) out/diff.tex
+	rm -f out/*.log out/*.aux out/*.out out/*.tex report/*_old.md
 
 clean:
-	@rm -f out/*.log out/*.aux out/*.out out/*.tex report/*_old.md
+	rm -f out/*.log out/*.aux out/*.out out/*.tex report/*_old.md
