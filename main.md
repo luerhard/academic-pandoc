@@ -36,24 +36,21 @@ toc: false # Table of contents
 # Introduction
  
 
-This is my super important Article. This is me ! Me 2
-This should have a better makefile.
-
-I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, p. 22].
+This is my super important Article. This is me ! I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, p. 22].
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## What do we want in here?
+# Theory
 
-What is this? test
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices. Feugiat pretium nibh ipsum consequat nisl. Fermentum odio eu feugiat pretium. Viverra nam libero justo laoreet. Fermentum leo vel orci porta non pulvinar neque. Ultricies mi quis hendrerit dolor magna eget est lorem. Facilisis mauris sit amet massa vitae tortor condimentum. Nisi scelerisque eu ultrices vitae auctor eu augue. Ultrices mi tempus imperdiet nulla. Pharetra pharetra massa massa ultricies. Fusce ut placerat orci nulla pellentesque. 
 
 ![My image description](rsc/images/cat.jpg){#fig:id .center}
 
-
+Massa tincidunt dui ut ornare lectus. Curabitur vitae nunc sed velit. Arcu felis bibendum ut tristique et egestas quis. Tellus elementum sagittis vitae et leo duis. Et ultrices neque ornare aenean euismod elementum nisi quis.
 # Methods {#sec:methods}
 
-Contrary to popular belief, Lorem Ipsum is not specific text.
-This is new.
+Contrary to popular belief, Lorem Ipsum is not specific text. See chapter {@sec:theory} for more details.
+
 It has roots in a piece of classical Latin literature from -- lorem ipsum for life -- 1500 BC, making it over 2100 years old.
 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
 
@@ -68,14 +65,16 @@ Hier ist noch mehr !!!
 
 
 ## Submethods {#sec:submethods}
-hallo world. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
+hallo world[^1]. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
 
 ### Subsubmethods
 
-Hier ist ein bisschen was in _italic. yeah_[^1]
+Hier ist ein bisschen was in _italic. yeah_
 
 ## sec sub methods
 There are many variations of passages of Lorem Ipsum not  but the majority have suffered alteration in some form, by injected pain, or randomised words which don't look even slightly believable.
+
+We are currently in Section {@sec:sec-sub-methods}.
 
 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
 ll the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.

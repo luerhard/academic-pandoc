@@ -44,7 +44,7 @@ diff:
 	latexdiff out/main_old.tex out/main.tex > out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
-	rm -f out/*.log out/*.aux out/*.out out/*.tex report/*_old.md
+	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md
 
 clean:
-	rm -f out/*.log out/*.aux out/*.out out/*.tex report/*_old.md
+	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md
