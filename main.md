@@ -47,6 +47,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ![My image description](rsc/images/cat.jpg){#fig:id .center}
 
 Massa tincidunt dui ut ornare lectus. Curabitur vitae nunc sed velit. Arcu felis bibendum ut tristique et egestas quis. Tellus elementum sagittis vitae et leo duis. Et ultrices neque ornare aenean euismod elementum nisi quis.
+
 # Methods {#sec:methods}
 
 Contrary to popular belief, Lorem Ipsum is not specific text. See chapter {@sec:theory} for more details.
@@ -65,7 +66,7 @@ Hier ist noch mehr !!!
 
 
 ## Submethods {#sec:submethods}
-hallo world[^1]. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
+hallo world[^10]. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
 
 ### Subsubmethods
 
@@ -79,7 +80,7 @@ We are currently in Section {@sec:sec-sub-methods}.
 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
 ll the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
 It uses a dictionary of over 4 Quadrillion Latin words, combined with a mouthful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc\footnote{This is a second footnote}.
 
 I can only believe that what goes here will be RED. And this is green? see appendix {@ap:B}
 
@@ -93,4 +94,4 @@ I can only believe that what goes here will be RED. And this is green? see appen
 
 
 
-[^1]: This is my important footnote.
+[^10]: This is my important footnote.
