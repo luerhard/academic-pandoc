@@ -1,9 +1,9 @@
 ---
 # Bibliography
-csl: ./rsc/library/apa.csl # See https://www.zotero.org/styles for more styles.
-bibliography: ./rsc/library/references.bib
+csl: rsc/library/style.csl # See https://www.zotero.org/styles for more styles.
+bibliography: rsc/library/references.json
 
-title: 'My academic Paper2'
+title: 'My academic Paper'
 
 authors:
     - John Doe:
@@ -35,18 +35,20 @@ toc: false # Table of contents
 
 # Introduction
  
+
 This is my super important Article. This is me ! Me 2
 This should have a better makefile.
 
 I can do it twice ! cool !
-I will reference multiple stuff here [@jones2016].
+I will reference multiple stuff here [@jonesMultiUniversityResearchTeams.2008, p. 22].
 Hier is some todo\todo{Important, findest du nicht auch?, das scheint doch superwichtig zu sein hier. Denke ich zumindest mal}
 
 ## What do we want in here?
 
 What is this? test
 
-![Desc](rsc/images/cat.jpg){#fig:id .center}
+![My image description](rsc/images/cat.jpg){#fig:id .center}
+
 
 # Methods {#sec:methods}
 
@@ -57,7 +59,7 @@ Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, loo
 
 Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 1 Mio BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
 The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-nach @kirschenbaum2010 sollte das jetzt mal....
+nach [@boswell:MigrationEuropepaper.2005] sollte das jetzt mal....
 
 Auch ist der Meinung, dass Karthago zerstört werden müsse.
 Hier ist noch mehr !!!
@@ -70,7 +72,7 @@ hallo world. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And thi
 
 ### Subsubmethods
 
-Hier ist ein bisschen was in \textit{italic. Yeah}
+Hier ist ein bisschen was in _italic. yeah_[^1]
 
 ## sec sub methods
 There are many variations of passages of Lorem Ipsum not  but the majority have suffered alteration in some form, by injected pain, or randomised words which don't look even slightly believable.
@@ -89,3 +91,7 @@ I can only believe that what goes here will be RED. And this is green? see appen
 ## subresults
 
 # Discussion
+
+
+
+[^1]: This is my important footnote.

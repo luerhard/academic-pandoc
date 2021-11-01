@@ -17,7 +17,7 @@ This is my appendix
 
 # New appendix {#ap:B}
 
-look at my descriptives! I want to cite here: @baayen2008
+look at my descriptives! I want to cite here:  @blumenau:NeverLetGood.2018
 
 ## Subappendix
 

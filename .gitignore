@@ -5,3 +5,4 @@ main.odt
 **/__pycache__/**
 out/**
 *.log
+.ztr-directory

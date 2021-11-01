@@ -2,7 +2,7 @@
 all: pdf docx clean
 
 depth ?= 1
-MD_FILES ?= report/main.md report/appendix.md
+MD_FILES ?= main.md appendix.md
 
 DOCX_FILTERS = -F rsc/filters/numbering.py
 LATEX_FILTERS = -F rsc/filters/authors_helper.py -F pandoc-fignos -F pandoc-secnos -F rsc/filters/appendix.py
