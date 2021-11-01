@@ -17,28 +17,30 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
 
 ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
 
-RUN wget https://github.com/jgm/pandoc/releases/download/2.16/pandoc-2.16-1-amd64.deb; \
-    dpkg -i pandoc-2.16-1-amd64.deb; \
-    rm pandoc-2.16-1-amd64.deb
-    
 RUN pip install --no-cache panflute \
         pandoc-fignos \
         pandoc-secnos
 
+RUN wget https://github.com/jgm/pandoc/releases/download/2.16/pandoc-2.16-1-amd64.deb; \
+    dpkg -i pandoc-2.16-1-amd64.deb; \
+    rm pandoc-2.16-1-amd64.deb
+    
+
 # Install latex packages
-RUN tlmgr install \
-    appendix \
-    booktabs \
-    caption \
-    cm-super \
-    csquotes \
-    float \
-    latexmk \
-    preprint \
-    setspace \
-    tabulary \
-    todonotes \
-    ulem    
+RUN tlmgr update --self && \
+    tlmgr install \
+        appendix \
+        booktabs \
+        caption \
+        cm-super \
+        csquotes \
+        float \
+        latexmk \
+        preprint \
+        setspace \
+        tabulary \
+        todonotes \
+        ulem    
 
 
 ENTRYPOINT ["docker/entrypoint.sh"]
