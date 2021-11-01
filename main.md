@@ -66,7 +66,7 @@ Hier ist noch mehr !!!
 
 
 ## Submethods {#sec:submethods}
-hallo world[^10]. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
+hallo world[^1]. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
 
 ### Subsubmethods
 
@@ -80,7 +80,7 @@ We are currently in Section {@sec:sec-sub-methods}.
 If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
 ll the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
 It uses a dictionary of over 4 Quadrillion Latin words, combined with a mouthful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc\footnote{This is a second footnote}.
+The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc[^2].
 
 I can only believe that what goes here will be RED. And this is green? see appendix {@ap:B}
 
@@ -94,4 +94,5 @@ I can only believe that what goes here will be RED. And this is green? see appen
 
 
 
-[^10]: This is my important footnote.
+[^1]: This is my important footnote.
+[^2]: This is a second footnote.
