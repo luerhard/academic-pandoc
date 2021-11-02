@@ -34,9 +34,10 @@ toc: false # Table of contents
 ---
 
 # Introduction
- 
 
-This is my super important Article. This is me ! I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, p. 22].
+Wir schreiben hier eine _Einleitung_ in kursiv sowie ein bisschen Text in **Fett**. Dabei updatest sich der Text quasi in Echtzeit. 
+Wir können hier so viel schreiben, wie wir wollen. @cheng:Miningresearchtrends.2015
+This is my super important Article. This is me ! I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, 22].
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -44,9 +45,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices. Feugiat pretium nibh ipsum consequat nisl. Fermentum odio eu feugiat pretium. Viverra nam libero justo laoreet. Fermentum leo vel orci porta non pulvinar neque. Ultricies mi quis hendrerit dolor magna eget est lorem. Facilisis mauris sit amet massa vitae tortor condimentum. Nisi scelerisque eu ultrices vitae auctor eu augue. Ultrices mi tempus imperdiet nulla. Pharetra pharetra massa massa ultricies. Fusce ut placerat orci nulla pellentesque. 
 
-![My image description](rsc/images/cat.jpg){#fig:id .center}
+![This is a cat !](rsc/images/cat.jpg){#fig:cat .center}
+
+As you can see in Figure {@fig:cat}, this is cute.
 
 Massa tincidunt dui ut ornare lectus. Curabitur vitae nunc sed velit. Arcu felis bibendum ut tristique et egestas quis. Tellus elementum sagittis vitae et leo duis. Et ultrices neque ornare aenean euismod elementum nisi quis.
+
+
 
 # Methods {#sec:methods}
 
@@ -89,6 +94,8 @@ I can only believe that what goes here will be RED. And this is green? see appen
 # Results
 
 ## subresults
+
+A linked reference to Figure {@fig:cat}.
 
 # Discussion
 
