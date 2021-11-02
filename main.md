@@ -37,7 +37,7 @@ toc: false # Table of contents
 
 Wir schreiben hier eine _Einleitung_ in kursiv sowie ein bisschen Text in **Fett**. Dabei updatest sich der Text quasi in Echtzeit. 
 Wir können hier so viel schreiben, wie wir wollen. @cheng:Miningresearchtrends.2015
-This is my super important Article. This is me ! I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, 22].
+This is my super important Article. This is me ! I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, 23].
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
