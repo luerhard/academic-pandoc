@@ -96,3 +96,4 @@ I can only believe that what goes here will be RED. And this is green? see appen
 
 [^1]: This is my important footnote.
 [^2]: This is a second footnote.
+

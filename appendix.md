@@ -21,7 +21,7 @@ look at my descriptives! I want to cite here:  @blumenau:NeverLetGood.2018
 
 ## Subappendix
 
-### subsubappednxi
+### subsubappendix
 ::: {#endappendix}
 :::
 
