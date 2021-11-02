@@ -47,4 +47,4 @@ diff:
 	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md
 
 clean:
-	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md
+	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md out/*.tdo
