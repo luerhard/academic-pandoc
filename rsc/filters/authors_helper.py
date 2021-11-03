@@ -12,6 +12,8 @@ def extract_institutions(author):
 
 def prepare(doc):
     authors = doc.get_metadata("authors")
+    if not authors:
+        return
     institutes = doc.get_metadata("institutes")
     insts = []
     for author in authors:
