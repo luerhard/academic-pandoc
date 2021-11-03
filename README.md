@@ -8,10 +8,10 @@
 
 ```bash
 # to run normally
-docker run --rm --workdir /wrk -v $(pwd):/wrk lerhard/pandoc
+docker run --rm -v $(pwd):/wrk lerhard/pandoc
 
 # create custom diff (where 5 is an arbitrary number of commits)
-docker run --rm --workdir /wrk -v $(pwd):/wrk --entrypoint="" lerhard/pandoc make diff depth=5
+docker run --rm -v $(pwd):/wrk --entrypoint="" lerhard/pandoc make diff depth=5
 ```
 
 # local dependencies
