@@ -4,7 +4,7 @@
 2. Push to main
 3. View your results in the Actions Tab
 
-# run locally
+# run with docker
 
 ```bash
 # to run normally
@@ -12,6 +12,22 @@ docker run --rm --workdir /wrk -v $(pwd):/wrk lerhard/pandoc
 
 # create custom diff (where 5 is an arbitrary number of commits)
 docker run --rm --workdir /wrk -v $(pwd):/wrk --entrypoint="" lerhard/pandoc make diff depth=5
+```
+
+# local dependencies
+
+If you want to install the software directly on your system, the following dependencies are needed:
+
+```
+- make
+- TexLive 2020
+- pandoc 2.16 (lower versions may work)
+- python3
+
+pypi (pip) dependencies:
+- panflute
+- pandoc-fignos
+- pandoc-secnos
 ```
 
 # possible make commands
