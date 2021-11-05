@@ -12,7 +12,7 @@ authors:
     - Jane Doe:
         institute: wuppi
         email: janedoe@wuppertal.com
-    - Jack Barner:
+    - Jack Barnes:
         institute: bro
         email: janedoe@wuppertal.com
         correspondence: yes
@@ -47,7 +47,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices. Feugiat pretium nibh ipsum consequat nisl. Fermentum odio eu feugiat pretium. Viverra nam libero justo laoreet. Fermentum leo vel orci porta non pulvinar neque. Ultricies mi quis hendrerit dolor magna eget est lorem. Facilisis mauris sit amet massa vitae tortor condimentum. Nisi scelerisque eu ultrices vitae auctor eu augue. Ultrices mi tempus imperdiet nulla. Pharetra pharetra massa massa ultricies. Fusce ut placerat orci nulla pellentesque. 
 
-![This is a cat !](rsc/images/cat.jpg){#fig:cat .center}
+![This is a cat !](rsc/images/Figure_1.eps){#fig:cat .center width="100%"}
 
 As you can see in Figure {@fig:cat}, this is cute.
 
