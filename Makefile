@@ -18,14 +18,17 @@ pdflatex_args := -interaction batchmode -output-directory=out/
 
 
 latex:
+	mkdir -p out/
 	pandoc $(md_to_tex_args) --metadata link-citations=true -o out/main.tex $(MD_FILES)
 	
 docx:
+	mkdir -p out/
 	pandoc $(md_to_tex_args) -o out/main.tex $(MD_FILES)
 	python rsc/filters/strip_vadjust.py out/main.tex
 	pandoc $(tex_to_docx_args) -o out/main.docx out/main.tex 
 
 pdf:
+	mkdir -p out/
 	pandoc $(md_to_tex_args) --metadata link-citations=true -o out/main.tex $(MD_FILES)
 	pdflatex $(pdflatex_args) out/main.tex
 	pdflatex $(pdflatex_args) out/main.tex
@@ -33,6 +36,7 @@ pdf:
 
 .ONESHELL:
 diff:	
+	mkdir -p out/
 	pandoc $(md_to_tex_args) --metadata link-citations=false -o out/main.tex $(MD_FILES)
 	
 	@OLD_FILES=$(nullstring)
