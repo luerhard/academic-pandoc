@@ -1,21 +1,22 @@
 FROM bitnami/minideb:latest
-MAINTAINER Lukas Erhard <luerhard@googlemail.com>
+
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -q; \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -qq git \
+    apt-get install -y git \
                         wget \
                         libfontconfig1 \
+                        python3 \
+                        make \
                         python3-pip; \
+    pip3 install --no-cache panflute \
+                        pandoc-fignos \
+                        pandoc-secnos; \
+    apt-get purge -y --auto-remove python3-pip; \
     rm -rf /var/lib/apt/lists/*
     
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 100; \
-    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 100
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 100
 
-RUN pip install --no-cache panflute \
-                        pandoc-fignos \
-                        pandoc-secnos
-                            
 # Install TexLive with scheme-basic
 RUN wget https://mirror.clientvps.com/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz; \
     mkdir /install-tl-unx; \
