@@ -8,6 +8,7 @@ RUN apt-get update -q; \
                         libfontconfig1 \
                         python3 \
                         make \
+                        ghostscript \
                         python3-pip; \
     pip3 install --no-cache panflute \
                         pandoc-fignos \
