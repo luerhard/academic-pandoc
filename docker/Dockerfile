@@ -46,6 +46,7 @@ RUN tlmgr update --self && \
         caption \
         cm-super \
         csquotes \
+        epstopdf \
         float \
         latexdiff \
         latexmk \
