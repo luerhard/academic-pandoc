@@ -37,7 +37,7 @@ toc: false # Table of contents
 
 Ich schreibe jetzt meine Einleitung.
 
-Wir schreiben hier eine _Einleitung_ in kursiv sowie ein bisschen Text in **Fett**. Dabei updatest sich der Text quasi in Echtzeit. 
+Wir schreiben hier eine _Einleitung_ in kursiv sowie ein bisschen Text in Fett. Dabei updatest sich der Text quasi in Echtzeit. 
 Wir können hier so viel schreiben, wie wir wollen. @cheng:Miningresearchtrends.2015
 This is my super important Article. This is me ! I will reference stuff here [@jonesMultiUniversityResearchTeams.2008, 23].
 
