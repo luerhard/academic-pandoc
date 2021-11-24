@@ -107,10 +107,12 @@ $endif$
     \begin {center}%
     {\LARGE \@title \par}%
     \vskip 1.5em%
+    $if(authors)$
     {\large \lineskip .5em%
         \begin {tabular}[t]{c}%
         \@author
         \end {tabular}\par}%
+    $endif$
     $if(correspondence)$
     $if(multi_correspondence)$
         \vskip 0.2em{\textsuperscript{*}\,Correspondening authors:\\
