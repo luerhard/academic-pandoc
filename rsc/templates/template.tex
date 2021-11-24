@@ -60,53 +60,87 @@ $if(title)$
 \title{$title$}
 $endif$
 
-\usepackage{authblk}
-$for(authors)$
-\author[$for(authors.institute)$$authors.institute$$sep$,$endfor$]{$authors.name$%
-	$if(authors.correspondence)$%
-	$if(authors.email)$%
-	\textsuperscript{*\,}%
-    $endif$%
-    $endif$%
-}%
-$endfor$
+ % if multiple authors are named
+$if(authors)$
+    \usepackage{authblk}
+    %if multiple authors have institutes
+    $if(institutes)$ 
+        $for(authors)$
+            $if(authors.institute)$
+                \author[%
+                    $for(authors.institute)$%
+                        $authors.institute$$sep$,%
+                    $endfor$%
+                    ]{$authors.name$%
+                    $if(authors.correspondence)$%
+                        $if(authors.email)$%
+                            \textsuperscript{*\,}%
+                        $endif$%
+                    $endif$%
+                }
+            $else$
+                
+            $endif$
+        $endfor$
+        $for(institutes)$
+            \affil[$institutes.index$]{$institutes.name$}
+        $endfor$
+    $else$
+        $for(authors)$
+        \author{$authors.name$%
+        $if(authors.correspondence)$%
+            $if(authors.email)$%
+                \textsuperscript{*\,}%
+            $endif$%
+        $endif$%
+        }
+        $endfor$
+        \affil{}
+    $endif$
 
-$for(institute)$
-\affil[$institute.index$]{$institute.name$}
-$endfor$
-
+$endif$
 \date{$date$}
 
 \makeatletter
 \def\@maketitle{%
-	\newpage \null \vskip 2em
-	\begin {center}%
-	{\LARGE \@title \par}%
-	\vskip 1.5em%
-	{\large \lineskip .5em%
-		\begin {tabular}[t]{c}%
-		\@author
-		\end {tabular}\par}%
-	$if(correspondence)$
-	\vskip 0.2em{\textsuperscript{*}\,Correspondence:
-		$for(authors)$$if(authors.correspondence)$$if(authors.email)$
-		$authors.name$ <$authors.email$>\\
-		$endif$$endif$$endfor$}%
-	%$endif$
-	\vskip 1em{\large \@date}%
-	\end {center}%
-	\par
-	\vskip 1.5em}
+    \newpage \null \vskip 2em
+    \begin {center}%
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large \lineskip .5em%
+        \begin {tabular}[t]{c}%
+        \@author
+        \end {tabular}\par}%
+    $if(correspondence)$
+    $if(multi_correspondence)$
+        \vskip 0.2em{\textsuperscript{*}\,Correspondening authors:\\
+        $for(authors)$$if(authors.correspondence)$$if(authors.email)$
+        $authors.name$: \href{mailto:$authors.email$}{$authors.email$}\\
+        $endif$$endif$$endfor$}%
+    $else$
+        \vskip 0.2em{\textsuperscript{*}\,Corresponding author:
+        $for(authors)$$if(authors.correspondence)$$if(authors.email)$
+        $authors.name$ <\href{mailto:$authors.email$}{$authors.email$}>
+        $endif$$endif$$endfor$}%
+    $endif$
+    $endif$
+    \vskip 1em{\large \@date}%
+    \end {center}%
+    \par
+    \vskip 1.5em}
 \makeatother
 
 \begin{document}
-	
+
 $if(titlepage)$
 \newgeometry{margin=2.5cm}
 \maketitle
 $if(abstract)$
 \begin{abstract}
-$abstract$
+    $abstract$\\
+    $for(authors)$
+        $authors.name$\\
+    $endfor$
 \end{abstract}
 $endif$
 \thispagestyle{empty}
