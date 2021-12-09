@@ -43,18 +43,24 @@ WORKDIR /wrk
 RUN tlmgr update --self && \
     tlmgr install \
         appendix \
+        beamer \
         booktabs \
         caption \
         cm-super \
+        collection-fontsrecommended \
         csquotes \
+        makeshape \
         epstopdf \
         float \
+        flowchart \
         latexdiff \
         latexmk \
         listings \
         preprint \
+        sfmath \
         setspace \
         tabulary \
+        textpos \
         todonotes \
         ulem
         

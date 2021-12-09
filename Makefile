@@ -32,7 +32,6 @@ pdf:
 	pandoc $(md_to_tex_args) --metadata link-citations=true -o out/main.tex $(MD_FILES)
 	pdflatex $(pdflatex_args) out/main.tex
 	pdflatex $(pdflatex_args) out/main.tex
-	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md out/*.tdo out/*.toc
 
 .ONESHELL:
 diff:	
