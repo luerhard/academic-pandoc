@@ -28,6 +28,8 @@ pypi (pip) dependencies:
 - panflute
 - pandoc-fignos
 - pandoc-secnos
+- pandoc-acronyms
+
 ```
 
 # possible make commands
@@ -44,3 +46,23 @@ make docx
 # create a diff pdf where depth is the number of commits to compare
 make diff depth=5
 ```
+
+# Implemented features
+
+## Acronyms
+
+To use acronyms, this repo uses [pandoc-acronyms](https://gitlab.com/mirkoboehm/pandoc-acronyms). 
+
+The acronyms are to be specified in: `rsc/acronyms.json`and to be used in-text like this:
+
+The most common way to write an acronym in the text is [!key]. To customize the output, the acronym specification can be made more specific:
+
+* [!+key] selects the plural form of the acronym.
+* [!^key] selects the uppercase form of the acronym. This only affects the long form, the abbreviated short form will not be changed.
+* [!+^key] For plural uppercase variants, plural must be specified first.
+
+It is also possible to select which form should be inserted into the text (this can be combined with plural or uppercase selection):
+
+* [!key>] inserts the long form ("beer brewing attitude").
+* [!key<] inserts the short form ("BBA").
+* [!key!] inserts the explained form ("beer brewing attitude (BBA)").

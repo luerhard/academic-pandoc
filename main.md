@@ -35,7 +35,7 @@ toc: false # Table of contents
 
 # Introduction
 
-Ich schreibe jetzt meine Einleitung.
+Ich schreibe jetzt meine Einleitung. And i use the acronym [!aba] here for the first time, and here: [!aba] for the second time.
 
 Wir schreiben hier eine _Einleitung_ in kursiv sowie ein bisschen Text in Fett. Dabei updatest sich der Text quasi in Echtzeit. 
 Wir können hier so viel schreiben, wie wir wollen. @cheng:Miningresearchtrends.2015

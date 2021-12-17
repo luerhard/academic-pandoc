@@ -12,7 +12,8 @@ RUN apt-get update -q; \
                         python3-pip; \
     pip3 install --no-cache panflute \
                         pandoc-fignos \
-                        pandoc-secnos; \
+                        pandoc-secnos \
+                        pandoc-acronyms; \
     apt-get purge -y --auto-remove python3-pip; \
     rm -rf /var/lib/apt/lists/*
     
