@@ -55,7 +55,8 @@ To use acronyms, this repo uses [pandoc-acronyms](https://gitlab.com/mirkoboehm/
 
 The acronyms are to be specified in: `rsc/acronyms.json`and to be used in-text like this:
 
-The most common way to write an acronym in the text is [!key]. To customize the output, the acronym specification can be made more specific:
+The most common way to write an acronym in the text is [!key].
+To customize the output, the acronym specification can be made more specific:
 
 * [!+key] selects the plural form of the acronym.
 * [!^key] selects the uppercase form of the acronym. This only affects the long form, the abbreviated short form will not be changed.
