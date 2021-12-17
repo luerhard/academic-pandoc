@@ -5,7 +5,7 @@ depth ?= 1
 MD_FILES ?= main.md appendix.md
 
 DOCX_FILTERS = -F rsc/filters/numbering.py -F pandoc-acronyms
-LATEX_FILTERS = -F rsc/filters/authors_helper.py -F pandoc-fignos -F pandoc-secnos -F pandoc-acronyms -F rsc/filters/appendix.py
+LATEX_FILTERS = -F rsc/filters/authors_helper.py -F pandoc-fignos -F pandoc-secnos -F pandoc-acronyms -F pantable -F rsc/filters/appendix.py
 
 LATEX_TEMPLATE = rsc/templates/template.tex
 DOCX_TEMPLATE = rsc/templates/template.docx

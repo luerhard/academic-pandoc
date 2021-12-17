@@ -5,12 +5,16 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{appendix}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{calc}
 \usepackage{caption}
 \usepackage{csquotes}
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{authblk}
 \usepackage{setspace}
+
 \setlength{\marginparwidth }{2cm}
 \usepackage[textwidth=4.5cm, tickmarkheight=0.2cm, textsize=footnotesize]{todonotes}
 \floatplacement{figure}{$if(float-placement-figure)$$float-placement-figure$$else$H$endif$}
@@ -26,7 +30,8 @@ bottom=3cm
 
 \input{rsc/templates/page}
 
-
+% satisfy pandoc's tightlist command
+\def\tightlist{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 
 $if(csl-refs)$

@@ -13,6 +13,7 @@ RUN apt-get update -q; \
     pip3 install --no-cache panflute \
                         pandoc-fignos \
                         pandoc-secnos \
+                        pantable \
                         click==7.1.2 \
                         pandoc-acronyms; \
     apt-get purge -y --auto-remove python3-pip; \

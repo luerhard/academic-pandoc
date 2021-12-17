@@ -71,6 +71,16 @@ Hier ist noch mehr !!!
 \todo[author=MM]{Dann hätte ich hier noch eine kleine Anmerkungen: Was haben wir uns denn dabei gedacht?}
 \todo[author=KU]{Oh, das habe ich übersehen}
 
+with a table produced from a csv:
+
+```table
+---
+alignment: LLL
+width: [0.2,0.2,0.2]
+include: rsc/tables/sample.csv
+markdown: true
+---
+```
 
 ## Submethods {#sec:submethods}
 hallo world[^1]. Der Rest kann in Kapitel {@sec:methods} nachgelesen werden. And this is: {@sec:submethods}
