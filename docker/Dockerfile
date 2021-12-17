@@ -13,8 +13,10 @@ RUN apt-get update -q; \
     pip3 install --no-cache panflute \
                         pandoc-fignos \
                         pandoc-secnos \
+                        click==7.1.2 \
                         pandoc-acronyms; \
     apt-get purge -y --auto-remove python3-pip; \
+    apt-get clean; \
     rm -rf /var/lib/apt/lists/*
     
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 100
@@ -34,9 +36,9 @@ RUN wget https://mirror.clientvps.com/CTAN/systems/texlive/tlnet/install-tl-unx.
 ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
 
 # install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/2.16.1/pandoc-2.16.1-1-amd64.deb; \
-    dpkg -i pandoc-2.16.1-1-amd64.deb; \
-    rm pandoc-2.16.1-1-amd64.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-1-amd64.deb; \
+    dpkg -i pandoc-2.16.2-1-amd64.deb; \
+    rm pandoc-2.16.2-1-amd64.deb
     
 WORKDIR /wrk
 
