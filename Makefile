@@ -38,11 +38,12 @@ _make_diff:
 		git show HEAD~$(depth):$$file > $$OLD; \
 		OLD_FILES="$$OLD_FILES $$OLD"; \
 	done
-	pandoc ${md_to_tex_args} -o out/main_old.tex $$OLD_FILES
+	pandoc -o out/main_old.tex ${md_to_tex_args} $(LATEX_FILTERS) $$OLD_FILES
+	pandoc -o out/main.tex ${md_to_tex_args} $(LATEX_FILTERS) $(MD_FILES)
 	latexdiff out/main_old.tex out/main.tex > out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
-	rm *_old.md
+	rm *_old.md out/main.tex out/main_old.tex out/diff.tex
 
 diff:	_ensure_folder _make_diff
 
@@ -53,4 +54,4 @@ docx: _ensure_folder _md_to_docx
 pdf: _ensure_folder _md_to_pdf
 
 clean:
-	rm -f out/*.log out/*.aux out/*.out out/*.tex *_old.md out/*.tdo out/*.toc
+	rm -f out/*.log out/*.aux out/*.out *_old.md out/*.tdo out/*.toc

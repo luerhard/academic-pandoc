@@ -26,10 +26,10 @@ date: \today
 
 abstract: 'Hier Vorgang ihm als reiße. Ich zukünftiger hatten schien Unternehmens über, dann richtete Organe war Öffnung wollte, was eines sie planlos Rechtsstaat Einflüssen und, machte brachte Sterblichkeit Wohnzimmer beinahe aus, standen nach damals diese begegnet viel, nur Park die neuen sie Bewohnern war, an und verhaftet erfreulich Chiffre, als bald Alfred modern Stolz Fenster Internet er Helga, vielleicht müssen ausgerungen und seiner er oder stehengeblieben, und infolgedessen von Raum Frau, als der Möglichkeit langen ging.'
 
-keywords: 'Schlagworte, Worte'
+keywords: 'Key, Words'
 
 titlepage: true
-toc: false # Table of contents
+toc: true # Table of contents
 
 ---
 
@@ -43,21 +43,48 @@ This is my super important Article. This is me ! I will reference stuff here [@j
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-# Theory
+# Features
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices. Feugiat pretium nibh ipsum consequat nisl. Fermentum odio eu feugiat pretium. Viverra nam libero justo laoreet. Fermentum leo vel orci porta non pulvinar neque. Ultricies mi quis hendrerit dolor magna eget est lorem. Facilisis mauris sit amet massa vitae tortor condimentum. Nisi scelerisque eu ultrices vitae auctor eu augue. Ultrices mi tempus imperdiet nulla. Pharetra pharetra massa massa ultricies. Fusce ut placerat orci nulla pellentesque. 
+## Acronyms
+And i use the acronym [!aba] here for the first time, and here: [!aba] for the second time.
+
+## Citations
+
+Citations are stored in `rsc/library/references.json.
+They can be used as in-text with: @boswell:MigrationEuropepaper.2005 or in parentheses with [@boswell:MigrationEuropepaper.2005].
+
+The style for the references is a CSL Stylesheet in `rsc/library/style.csl`. It defaults to APA7.
+
+Both paths can be changed in the header of `main.md`.
+
+ 
+## Images
+
+This is how to add images:
 
 ![This is a cat !](rsc/images/Figure_1.eps){#fig:cat .center width="100%"}
 
+This is how to reference images:
+
 As you can see in Figure {@fig:cat}, this is cute.
 
-Massa tincidunt dui ut ornare lectus. Curabitur vitae nunc sed velit. Arcu felis bibendum ut tristique et egestas quis. Tellus elementum sagittis vitae et leo duis. Et ultrices neque ornare aenean euismod elementum nisi quis.
 
+## Tables
+
+This is how to include tables from csv files via `pantable` :
+
+```table
+---
+alignment: LLL
+width: [0.2,0.2,0.2]
+include: rsc/tables/sample.csv
+markdown: true
+---
+```
 
 
 # Methods {#sec:methods}
 
-Contrary to popular belief, Lorem Ipsum is not specific text. See chapter {@sec:theory} for more details.
 
 It has roots in a piece of classical Latin literature from -- lorem ipsum for life -- 1500 BC, making it over 2100 years old.
 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
