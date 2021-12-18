@@ -1,6 +1,6 @@
 \newpage
 
-# References {.unnumbered .unlisted}
+# References {.unnumbered}
 ::: {#refs}
 :::
 \newpage
@@ -9,7 +9,7 @@
 
 ::: {#beginappendix}
 :::
-# Appendices {.unnumbered .unlisted}
+# Appendices {.unnumbered}
 
 # This is my appendix Super important 
 This is my appendix
@@ -21,7 +21,7 @@ My super important descriptives! I want to cite here:  @blumenau:NeverLetGood.20
 
 ## Subappendix
 
-### subsubappendxi
+### subsubappendix
 ::: {#endappendix}
 :::
 

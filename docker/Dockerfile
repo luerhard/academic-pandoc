@@ -54,6 +54,7 @@ RUN tlmgr update --self && \
         collection-fontsrecommended \
         csquotes \
         makeshape \
+        multirow \
         epstopdf \
         float \
         flowchart \

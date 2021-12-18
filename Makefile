@@ -24,8 +24,14 @@ _ensure_folder:
 _md_to_tex:
 	pandoc $(md_to_tex_args) --metadata link-citations=true -o out/main.tex $(MD_FILES)
 	
+_tex_to_docx:
+	pandoc -o out/main.docx $(DOCX_FILTERS) --citeproc --reference-doc $(DOCX_TEMPLATE) out/main.tex
+	
+_tex_to_docx_filter:
+	python rsc/filters/strip_vadjust.py out/main.tex
+	
 _md_to_docx:
-	pandoc -o out/main.docx $(DOCX_FILTERS) --citeproc --reference-doc ${DOCX_TEMPLATE} $(MD_FILES)
+	pandoc -o out/main.docx $(DOCX_FILTERS) --citeproc --reference-doc $(DOCX_TEMPLATE) $(MD_FILES)
 	
 _md_to_pdf:
 	pandoc -o out/main.pdf $(LATEX_FILTERS) --citeproc --template $(LATEX_TEMPLATE) $(MD_FILES)
@@ -40,7 +46,7 @@ _make_diff:
 	done
 	pandoc -o out/main_old.tex ${md_to_tex_args} $(LATEX_FILTERS) $$OLD_FILES
 	pandoc -o out/main.tex ${md_to_tex_args} $(LATEX_FILTERS) $(MD_FILES)
-	latexdiff out/main_old.tex out/main.tex > out/diff.tex
+	latexdiff out/main_old.tex out/main.tex --replace-context2cmd="\author"> out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
 	rm *_old.md out/main.tex out/main_old.tex out/diff.tex
@@ -50,6 +56,8 @@ diff:	_ensure_folder _make_diff
 tex: _ensure_folder _md_to_tex
 	
 docx: _ensure_folder _md_to_docx
+
+latex_docx: _ensure_folder _md_to_tex _tex_to_docx_filter _tex_to_docx
 
 pdf: _ensure_folder _md_to_pdf
 
