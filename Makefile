@@ -30,6 +30,7 @@ _md_to_docx:
 _md_to_pdf:
 	pandoc -o out/main.pdf $(LATEX_FILTERS) --citeproc --template $(LATEX_TEMPLATE) $(MD_FILES)
 
+.ONESHELL:
 _make_diff:
 	@OLD_FILES=$(nullstring)
 	@for file in $(MD_FILES); do \
@@ -43,7 +44,6 @@ _make_diff:
 	pdflatex $(pdflatex_args) out/diff.tex
 	rm *_old.md
 
-.ONESHELL:
 diff:	_ensure_folder _make_diff
 
 tex: _ensure_folder _md_to_tex
