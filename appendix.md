@@ -7,22 +7,57 @@
 
 
 
-::: {#beginappendix}
-:::
+::::: {.appendix}
 # Appendices {.unnumbered}
 
-# This is my appendix Super important 
+# This is my appendix Super important {#ap:super_important}
+
+
+![And another cat](rsc/images/cat.jpg){#fig:catpic_A width=75%}
+
 This is my appendix
 
+```{.table #tbl:desc}
+---
+alignment: LLL
+caption: Example Table from csv
+width: [0.2,0.2,0.2]
+include: rsc/tables/sample.csv
+markdown: true
+---
+```
 
 # New appendix {#ap:B}
 
-My super important descriptives! I want to cite here:  @blumenau:NeverLetGood.2018
+My super important descriptives! I want to cite here: @blumenau:NeverLetGood.2018
 
-## Subappendix
+![A cat in the appendix](rsc/images/cat.jpg){#fig:catpic_B_small width=5%}
 
-### subsubappendix
-::: {#endappendix}
-:::
+## Subappendix {#ap:subappendix}
+
+```{.table #tbl:subap}
+---
+alignment: LLL
+caption: Example Table from csv
+width: [0.2,0.2,0.2]
+include: rsc/tables/sample.csv
+markdown: true
+---
+```
+
+### subsubappendix {#ap:subsub}
+
+```{.table #tbl:subsubap}
+---
+alignment: LLL
+caption: Example Table from csv
+width: [0.2,0.2,0.2]
+include: rsc/tables/sample.csv
+markdown: true
+---
+```
+
+![A cat in the appendix](rsc/images/cat.jpg){#fig:catpic_B width=75%}
+:::::
 
 # After appendix

@@ -4,8 +4,8 @@ all: pdf docx clean
 depth ?= 1
 MD_FILES ?= main.md appendix.md
 
-COMMON_FILTERS = -F pandoc-fignos -F pandoc-secnos -F pandoc-acronyms -F pantable -F rsc/filters/appendix.py
-DOCX_FILTERS = $(COMMON_FILTERS) -F rsc/filters/numbering.py
+COMMON_FILTERS =  -F pantable -F pandoc-acronyms -F rsc/filters/crossref.py -F rsc/filters/appendix.py
+DOCX_FILTERS = $(COMMON_FILTERS)
 LATEX_FILTERS = $(COMMON_FILTERS) -F rsc/filters/authors_helper.py
 
 LATEX_TEMPLATE = rsc/templates/template.tex

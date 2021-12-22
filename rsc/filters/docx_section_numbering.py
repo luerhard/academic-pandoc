@@ -1,7 +1,13 @@
 from collections import defaultdict
+from os import access
 from string import ascii_lowercase
 
-from panflute import Div, Space, Header, run_filters, Str, Link
+from panflute import Div, Space, Header, run_filters, Str, Link, Table
+
+import logging
+
+logging.basicConfig(filename="numbering.txt", filemode="w")
+logger = logging.getLogger()
 
 
 def prepare(doc):
@@ -44,20 +50,42 @@ def get_current_level(doc, level):
     return ".".join(str(i) for i in levels[:level])
 
 
+def in_appendix(elem):
+    if hasattr(elem, "classes") and ("appendix" in elem.classes):
+        return True
+
+    i = 1
+    while elem.ancestor(i):
+        ancestor = elem.ancestor(i)
+        classes = getattr(ancestor, "classes", [])
+        logger.error("%s - %s", getattr(ancestor, "identifier", None), classes)
+        if "appendix" in classes:
+            return True
+        i += 1
+
+    return False
+
+
 def replace_headers(elem, doc):
-    if isinstance(elem, Div) and elem.identifier == "beginappendix":
+
+    if in_appendix(elem):
         doc.in_appendix = True
-    elif isinstance(elem, Div) and elem.identifier == "endappendix":
+    else:
         doc.in_appendix = False
     if isinstance(elem, Header):
         if "unnumbered" not in elem.classes:
-            header_level = get_current_level(doc, elem.level)
-            if doc.in_appendix:
-                doc.appendix_headers["#" + elem.identifier] = header_level
+            if doc.format == "doc":
+                header_level = get_current_level(doc, elem.level)
+                if in_appendix(elem):
+                    doc.appendix_headers["#" + elem.identifier] = header_level
 
-            title = [Str(header_level), Space, Space, *elem.content]
-            elem.content = title
-            return elem
+                if doc.format == "doc":
+                    title = [Str(header_level), Space, Space, *elem.content]
+                    elem.content = title
+                elif doc.format == "latex":
+                    pass
+
+                return elem
         else:
             return elem
 
