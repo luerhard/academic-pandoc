@@ -11,8 +11,6 @@ RUN apt-get update -q; \
                         ghostscript \
                         python3-pip; \
     pip3 install --no-cache panflute \
-                        pandoc-fignos \
-                        pandoc-secnos \
                         pantable \
                         click==7.1.2 \
                         pandoc-acronyms; \
@@ -68,5 +66,3 @@ RUN tlmgr update --self && \
         textpos \
         todonotes \
         ulem
-        
-ENTRYPOINT ["docker/entrypoint.sh"]
