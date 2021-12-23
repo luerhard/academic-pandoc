@@ -24,10 +24,21 @@ import numpy as np
 # logging.basicConfig(filename="crossref.txt", filemode="w")
 # logger = logging.getLogger()
 
+# Set valid identifiers for links in your Markdown document
 TABLE_IDENTIFIER = "tbl:"
 FIGURE_IDENTIFIER = "fig:"
 SECTION_IDENTIFIER = "sec:"
 APPENDIX_IDENTIFIER = "ap:"
+
+
+# Set Prefix in Figure Captions
+def FIGURE_PREFIX(fign):
+    return Str(f"Figure {fign}: ")
+
+
+# Set Prefix in Table Captions
+def TABLE_PREFIX(fign):
+    return Str(f"Table {fign}: ")
 
 
 LATEX_SECTION_MAPPER = {
@@ -268,41 +279,36 @@ def set_targets(elem, doc):
     elif isinstance(elem, Image):
         FIGURES.add_item(elem)
 
-    elif isinstance(elem, Table):
-        TABLES.add_item(elem)
-
-        if doc.format == "latex":
-            try:
-                para = elem.caption.content[0]
-            except IndexError:
-                para = Para()
-            caption = para.content
-            ref = RawInline(
-                f"\\protect\\hypertarget{{{elem.identifier}}}{{}}",
-                format="tex",
-            )
-            elem.caption = Caption(Para(*caption, ref))
+        # set number for caption
+        fign = FIGURES.find_item(elem.identifier)
+        ref = FIGURE_PREFIX(fign)
+        elem.content = [ref, *elem.content]
 
         return elem
 
+    elif isinstance(elem, Table):
+        TABLES.add_item(elem)
+        tabn = TABLES.find_item(elem.identifier)
+        ref = TABLE_PREFIX(tabn)
 
-"""def set_table_targets(elem, doc):
-    if isinstance(elem, Table):
-
-        identifier = elem.identifier
+        try:
+            para = elem.caption.content[0]
+        except IndexError:
+            para = Para()
+        caption = para.content
+        caption = [ref, *caption]
 
         if doc.format == "latex":
-            elem.caption = Caption(
-                Para(
-                    *elem.caption.content[0].content,
-                    RawInline(
-                        f"\\hypertarget{{{identifier}}}{{}}",
-                        format="latex",
-                    ),
-                )
+            link = RawInline(
+                f"\\protect\\hypertarget{{{elem.identifier}}}{{}}",
+                format="tex",
             )
-    return elem
-"""
+            elem.caption = Caption(Para(*caption, link))
+
+        elif doc.format == "docx":
+            elem.caption = Caption(Para(*caption))
+
+        return elem
 
 
 def main(doc=None):
