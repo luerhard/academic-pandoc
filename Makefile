@@ -4,7 +4,7 @@ all: pdf docx clean
 depth ?= 1
 MD_FILES ?= main.md appendix.md
 
-COMMON_FILTERS =  -F pantable -F pandoc-acronyms -F rsc/filters/crossref.py -F rsc/filters/appendix.py
+COMMON_FILTERS = -F pantable -F pandoc-acronyms -F rsc/filters/crossref.py -F rsc/filters/appendix.py
 DOCX_FILTERS = $(COMMON_FILTERS)
 LATEX_FILTERS = $(COMMON_FILTERS) -F rsc/filters/authors_helper.py
 
@@ -44,12 +44,12 @@ _make_diff:
 		git show HEAD~$(depth):$$file > $$OLD; \
 		OLD_FILES="$$OLD_FILES $$OLD"; \
 	done
-	pandoc -o out/main_old.tex ${md_to_tex_args} $(LATEX_FILTERS) $$OLD_FILES
-	pandoc -o out/main.tex ${md_to_tex_args} $(LATEX_FILTERS) $(MD_FILES)
+	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
+	pandoc -o out/main.tex ${md_to_tex_args} $(MD_FILES)
 	latexdiff out/main_old.tex out/main.tex --replace-context2cmd="\author"> out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
 	pdflatex $(pdflatex_args) out/diff.tex
-	rm *_old.md out/main.tex out/main_old.tex out/diff.tex
+	rm -f *_old.md out/*_old.tex out/diff.tex out/main.tex
 
 diff:	_ensure_folder _make_diff
 
@@ -62,4 +62,4 @@ latex_docx: _ensure_folder _md_to_tex _tex_to_docx_filter _tex_to_docx
 pdf: _ensure_folder _md_to_pdf
 
 clean:
-	rm -f out/*.log out/*.aux out/*.out *_old.md out/*.tdo out/*.toc
+	rm -f out/*.log out/*.aux out/*.out out/*.tdo out/*.toc

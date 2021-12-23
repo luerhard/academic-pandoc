@@ -19,9 +19,10 @@ from panflute import Strong
 from panflute import run_filters
 import numpy as np
 
-#import logging
-#logging.basicConfig(filename="crossref.txt", filemode="w")
-#logger = logging.getLogger()
+# for debugging uncomment and use logger.
+# import logging
+# logging.basicConfig(filename="crossref.txt", filemode="w")
+# logger = logging.getLogger()
 
 TABLE_IDENTIFIER = "tbl:"
 FIGURE_IDENTIFIER = "fig:"
@@ -103,7 +104,8 @@ class SectionReference:
         )
         return textwrap.dedent(
             f"""SectionReference(sections=[{sections}]
-            appendices=[{appendices}])""")
+            appendices=[{appendices}])"""
+        )
 
 
 SECTIONS = SectionReference()
@@ -128,7 +130,11 @@ class GenericReference:
             type_ = "main"
 
         if any(id_ in i for i in (self.items, self.appendix_items)):
-            print(f"ERROR: Duplicate cite-key: {id_} in\n{self}", file=sys.stderr, flush=True)
+            print(
+                f"ERROR: Duplicate cite-key: {id_} in\n{self}",
+                file=sys.stderr,
+                flush=True,
+            )
 
         if type_ == "main":
             self.items_counter += 1
@@ -138,7 +144,11 @@ class GenericReference:
             if latest_insert:
                 literal = latest_insert[0]
             else:
-                print(f"ERROR: Appendix Section could not be found - {SECTIONS.latest_insert}", file=sys.stderr, flush=True)
+                print(
+                    f"ERROR: Appendix Section could not be found - {SECTIONS.latest_insert}",
+                    file=sys.stderr,
+                    flush=True,
+                )
                 return "?"
             self.appendix_counter[literal] += 1
             self.appendix_items[id_] = "".join(
@@ -164,7 +174,8 @@ class GenericReference:
         )
         return textwrap.dedent(
             f"""{self.type_}Reference(items=[{items}]
-            appendix_items=[{appendix_items}])""")
+            appendix_items=[{appendix_items}])"""
+        )
 
 
 FIGURES = GenericReference(type_="Figures")
@@ -199,6 +210,7 @@ def _process_section(elem, doc):
 def replace_links(elem, doc):
     global TABLES
     global FIGURES
+
     if isinstance(elem, Cite) and len(elem.citations) == 1:
         cite = elem.citations[0]
         key = cite.id
@@ -240,7 +252,7 @@ def set_targets(elem, doc):
             content = Para(
                 RawInline(f"{section}{{", format="tex"),
                 *elem.content,
-                RawInline(f"}}~\\label{{{id_}}}", format="tex"),
+                RawInline(f"}}\\label{{{id_}}}", format="tex"),
             )
             return content
 
@@ -258,22 +270,23 @@ def set_targets(elem, doc):
 
     elif isinstance(elem, Table):
         TABLES.add_item(elem)
-        
+
         if doc.format == "latex":
             try:
                 para = elem.caption.content[0]
             except IndexError:
                 para = Para()
             caption = para.content
-            ref = RawInline(f"\\protect\\hypertarget{{{elem.identifier}}}{{}}", format="tex")
+            ref = RawInline(
+                f"\\protect\\hypertarget{{{elem.identifier}}}{{}}",
+                format="tex",
+            )
             elem.caption = Caption(Para(*caption, ref))
 
         return elem
-        
 
 
-
-def set_table_targets(elem, doc):
+"""def set_table_targets(elem, doc):
     if isinstance(elem, Table):
 
         identifier = elem.identifier
@@ -289,12 +302,11 @@ def set_table_targets(elem, doc):
                 )
             )
     return elem
+"""
 
 
 def main(doc=None):
-    return run_filters(
-        [set_targets, replace_links]
-    )
+    return run_filters([set_targets, replace_links])
 
 
 if __name__ == "__main__":
