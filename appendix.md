@@ -10,8 +10,9 @@
 ::::: {.appendix}
 # Appendices {.unnumbered}
 
-# This is my appendix Super important {#ap:super_important}
+# Introduction to the Appendix {#ap:super_important}
 
+There is only unnecessary stuff in those appendices which just exists we can reference stuff in the main part. (For now).
 
 ![And another cat](rsc/images/cat.jpg){#fig:catpic_A width=75%}
 
