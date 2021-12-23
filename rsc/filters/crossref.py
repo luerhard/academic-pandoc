@@ -3,6 +3,8 @@ from string import ascii_lowercase
 import textwrap
 import sys
 
+from typing import List
+
 from panflute import Header
 from panflute import Link
 from panflute import Str
@@ -17,9 +19,7 @@ from panflute import Strong
 from panflute import run_filters
 import numpy as np
 
-import logging
-
-
+#import logging
 #logging.basicConfig(filename="crossref.txt", filemode="w")
 #logger = logging.getLogger()
 
@@ -40,22 +40,6 @@ def appendix_letters(n):
     n_letters = (n // 26) + 1
     ith_letter = (n % 26) - 1
     return (ascii_lowercase[ith_letter] * n_letters).upper()
-
-
-def find_section(elem):
-    if isinstance(elem, Header):
-        logger.exception("ANC2 %s", elem.identifier)
-        return elem.identifier
-
-    i = -1
-    logger.exception("FIND SECTION FOR %s", elem)
-    logger.exception("FIRST OFFSET %s", elem.ancestor(2))
-    while elem.offset(i):
-        ancestor = elem.offset(i)
-        logger.exception("ANC: %s", ancestor)
-        if isinstance(ancestor, Header):
-            return ancestor.identifier
-        i -= 1
 
 
 def in_appendix(elem):
@@ -99,7 +83,7 @@ class SectionReference:
 
         self.latest_insert = id_
 
-    def find_section(self, id_: str) -> list[int]:
+    def find_section(self, id_: str) -> List[int]:
         if id_ in self.sections:
             number = self.sections[id_]
             return ".".join(str(n) for n in number if n > 0)
@@ -118,13 +102,8 @@ class SectionReference:
             [": ".join((ref, self.find_section(ref))) for ref in self.appendix]
         )
         return textwrap.dedent(
-            f"""
-        SectionReference(
-            sections=[{sections}]
-
-            appendices=[{appendices}]
-            )"""
-        )
+            f"""SectionReference(sections=[{sections}]
+            appendices=[{appendices}])""")
 
 
 SECTIONS = SectionReference()
@@ -184,13 +163,8 @@ class GenericReference:
             ]
         )
         return textwrap.dedent(
-            f"""
-        {self.type_}Reference(
-            items=[{items}]
-
-            appendix_items=[{appendix_items}]
-            )"""
-        )
+            f"""{self.type_}Reference(items=[{items}]
+            appendix_items=[{appendix_items}])""")
 
 
 FIGURES = GenericReference(type_="Figures")
@@ -219,7 +193,6 @@ def _process_section(elem, doc):
         return RawInline(f"\\ref{{{id_}}}", format="tex")
     elif doc.format == "docx":
         link = SECTIONS.find_section(id_)
-        logger.exception("PROC SEC: %s <--> %s", id_, link)
         return Str(link)
 
 
