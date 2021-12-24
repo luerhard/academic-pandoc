@@ -210,11 +210,22 @@ def _process_item(elem, doc, reference):
 def _process_section(elem, doc):
     global SECTIONS
     id_ = elem.citations[0].id
+    link = SECTIONS.find_section(id_)
+    if not link:
+        bad_reference = Strong(Str(f"?{id_}"))
+        print(
+            f"ERROR: bad reference. {id_} not found.",
+            file=sys.stderr,
+            flush=True,
+        )
 
     if doc.format == "latex":
+        if not link:
+            return bad_reference
         return RawInline(f"\\ref{{{id_}}}", format="tex")
     elif doc.format == "docx":
-        link = SECTIONS.find_section(id_)
+        if not link:
+            return bad_reference
         return Str(link)
 
 
