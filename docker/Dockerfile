@@ -54,6 +54,8 @@ RUN tlmgr update --self && \
         makeshape \
         multirow \
         epstopdf \
+        fancyvrb \
+        framed \
         float \
         flowchart \
         latexdiff \

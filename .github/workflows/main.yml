@@ -19,7 +19,7 @@ jobs:
       - run: mkdir -p out/
 
       - name: Create PDF
-        uses: docker://lerhard/pandoc:2.16.2-1
+        uses: docker://lerhard/pandoc:2.16.2-2
         with:
           entrypoint: "docker/entrypoint.sh"
 
