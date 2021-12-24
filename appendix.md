@@ -1,12 +1,22 @@
+
+```{=latex}
 \newpage
+```
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 # References {.unnumbered}
 ::: {#refs}
 :::
 \newpage
 
-
-
+```{=latex}
+\newpage
+```
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 ::::: {.appendix}
 # Appendices {.unnumbered}
 
