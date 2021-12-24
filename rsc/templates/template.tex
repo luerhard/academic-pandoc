@@ -9,6 +9,11 @@
 \usepackage{booktabs}
 \usepackage{calc}
 
+%used for colored code-snippets, color-scheme can be set in Makefile
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % caption numbers are created in crossref filter
 \usepackage{caption}
 \captionsetup{labelformat=empty}
