@@ -132,13 +132,12 @@ class GenericReference:
         self.appendix_counter = defaultdict(int)
 
     def add_item(self, elem) -> None:
-
-        id_ = elem.identifier
-
         if in_appendix(elem):
             type_ = "appendix"
         else:
             type_ = "main"
+
+        id_ = elem.identifier
 
         if any(id_ in i for i in (self.items, self.appendix_items)):
             print(
@@ -149,6 +148,9 @@ class GenericReference:
 
         if type_ == "main":
             self.items_counter += 1
+            if not elem.identifier:
+                elem.identifier = f"{self.type_}-{self.items_counter}"
+                id_ = elem.identifier
             self.items[id_] = self.items_counter
         elif type_ == "appendix":
             latest_insert = SECTIONS.find_section(SECTIONS.latest_insert)
@@ -189,8 +191,8 @@ class GenericReference:
         )
 
 
-FIGURES = GenericReference(type_="Figures")
-TABLES = GenericReference(type_="Tables")
+FIGURES = GenericReference(type_="figure")
+TABLES = GenericReference(type_="table")
 
 
 def _process_item(elem, doc, reference):
