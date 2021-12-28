@@ -111,10 +111,9 @@ This is how to add images:
 
 ![This is not a cat !](rsc/images/Figure_1.eps){#fig:timeline .center width="100%"}
 
-This is how to reference images:
-
-As you can see in Figure @fig:timeline, this is cute.
-Figures in the Appendix are numbered differently as you can see with @fig:catpic_A from Appendix @ap:super_important or Figure @fig:catpic_B from Appendix @ap:subsub
+This can be referenced using the tag Figure @fig:timeline.
+Currently, .eps, .jpg, and .png files are supported.
+Figures in the Appendix are numbered differently as you can see with @fig:catpic_A from Appendix @ap:super_important or Figure @fig:catpic_B from Appendix @ap:subsub.
 
 ## Footnotes {#sec:footnotes}
 
