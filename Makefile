@@ -63,7 +63,7 @@ _make_timediff:
 	done
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
-	DIFFNAME=out/diff_$$(echo $$at | sed "s/[[:space:]]/_/g").tex
+	DIFFNAME=out/diff_$$(echo $$at | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
 	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"> $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
