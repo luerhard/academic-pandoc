@@ -58,7 +58,7 @@ _make_timediff:
 	@OLD_FILES=$(nullstring)
 	@for file in $(MD_FILES); do \
 		OLD=$$(echo $$file | sed "s/.md/_old.md/"); \
-		git show 'HEAD@{$(at)}':$$file > out/$$OLD; \
+		git show `git rev-list -n 1 --before="$(at)" main`:$$file > out/$$OLD; \
 		OLD_FILES="$$OLD_FILES out/$$OLD"; \
 	done
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES

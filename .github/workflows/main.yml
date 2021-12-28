@@ -15,7 +15,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      - run: git fetch origin
 
       - name: Create PDF
         uses: docker://lerhard/pandoc:2.16.2-2
