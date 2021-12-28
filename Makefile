@@ -41,8 +41,8 @@ _md_to_pdf:
 
 .ONESHELL:
 _make_diff:
-	@OLD_FILES=$(nullstring)
-	@for file in $(MD_FILES); do \
+	OLD_FILES=$(nullstring)
+	for file in $(MD_FILES); do \
 		OLD=$$(echo $$file | sed "s/.md/_old.md/"); \
 		git show HEAD~$(depth):$$file > out/$$OLD; \
 		OLD_FILES="$$OLD_FILES out/$$OLD"; \
@@ -55,15 +55,15 @@ _make_diff:
 
 .ONESHELL:
 _make_timediff:
-	@OLD_FILES=$(nullstring)
-	@for file in $(MD_FILES); do \
+	OLD_FILES=$(nullstring)
+	for file in $(MD_FILES); do \
 		OLD=$$(echo $$file | sed "s/.md/_old.md/"); \
 		git show `git rev-list -n 1 --before="$(at)" main`:$$file > out/$$OLD; \
 		OLD_FILES="$$OLD_FILES out/$$OLD"; \
 	done
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
-	DIFFNAME=out/diff_$$(echo $$at | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
+	DIFFNAME="out/diff_$$(echo $$at | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex"
 	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"> $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
