@@ -7,11 +7,17 @@
 # run with docker
 
 ```bash
-# to run normally
-docker run --rm -v $(pwd):/wrk lerhard/pandoc
+# to create a pdf on Linux or Mac
+docker run --rm -v $(pwd):/wrk lerhard/pandoc:2.16.2-2 make pdf
+
+# to create a pdf on PowerShell (Windows) it might be necessary to write:
+docker run --rm -v ${PWD}:/wrk lerhard/pandoc:2.16.2-2 make pdf
+
+# for Windows Command Line, use
+docker run --rm -v %cd%:/wrk lerhard/pandoc:2.16.2-2 make pdf
 
 # create custom diff (where 5 is an arbitrary number of commits)
-docker run --rm -v $(pwd):/wrk --entrypoint="" lerhard/pandoc make diff depth=5
+docker run --rm -v $(pwd):/wrk lerhard/pandoc:2.16.2-2 make diff depth=5
 ```
 
 # local dependencies
@@ -24,46 +30,12 @@ If you want to install the software directly on your system, the following depen
 - pandoc 2.16 (lower versions may work)
 - python3
 
-pypi (pip) dependencies:
+PyPi (pip) dependencies:
 - panflute
-- pandoc-fignos
-- pandoc-secnos
-- pandoc-acronyms
-
+- pantable
 ```
 
-# possible make commands
-```bash
-# create pdf, docx and diff with depth=1
-make 
+# Features and documentation
 
-# create a pdf
-make pdf
-
-# create a word document
-make docx
-
-# create a diff pdf where depth is the number of commits to compare
-make diff depth=5
-```
-
-# Implemented features
-
-## Acronyms
-
-To use acronyms, this repo uses [pandoc-acronyms](https://gitlab.com/mirkoboehm/pandoc-acronyms). 
-
-The acronyms are to be specified in: `rsc/acronyms.json`and to be used in-text like this:
-
-The most common way to write an acronym in the text is [!key].
-To customize the output, the acronym specification can be made more specific:
-
-* [!+key] selects the plural form of the acronym.
-* [!^key] selects the uppercase form of the acronym. This only affects the long form, the abbreviated short form will not be changed.
-* [!+^key] For plural uppercase variants, plural must be specified first.
-
-It is also possible to select which form should be inserted into the text (this can be combined with plural or uppercase selection):
-
-* [!key>] inserts the long form ("beer brewing attitude").
-* [!key<] inserts the short form ("BBA").
-* [!key!] inserts the explained form ("beer brewing attitude (BBA)").
+Please see the actions tab or compile this template to get a full documentation.
+If anything is left unclear, pleas do not hesitate to open an issue.
