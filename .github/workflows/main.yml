@@ -9,14 +9,13 @@ on:
 jobs:
   create_pdf:
     runs-on: ubuntu-latest
-    steps:      
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           ref: main
-
-      - run: mkdir -p out/
+      - run: git fetch origin
 
       - name: Create PDF
         uses: docker://lerhard/pandoc:2.16.2-2
