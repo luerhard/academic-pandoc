@@ -2,7 +2,6 @@
 all: pdf docx clean
 
 depth ?= 1
-at := "yesterday"
 MD_FILES ?= main.md appendix.md
 
 COMMON_FILTERS = -F pantable -F pandoc-acronyms -F rsc/filters/crossref.py -F rsc/filters/appendix.py --highlight-style=tango
@@ -14,10 +13,7 @@ DOCX_TEMPLATE = rsc/templates/template.docx
 
 
 md_to_tex_args := -f markdown -t latex -s --template ${LATEX_TEMPLATE} --pdf-engine pdflatex $(LATEX_FILTERS) --citeproc
-pdflatex_args := -interaction batchmode -output-directory=out/ 
-
-DIFFBASE := out/diff_
-DIFFSUFFIX := .tex
+pdflatex_args := -interaction nonstopmode -output-directory=out/ 
 
 export PANDOC_ACRONYMS_ACRONYMS=rsc/acronyms.json
 
@@ -68,12 +64,29 @@ _make_timediff:
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 
+.ONESHELL:
+_make_tagdiff:
+	OLD_FILES=$(nullstring)
+	for file in $(MD_FILES); do \
+		OLD=$$(echo $$file | sed "s/.md/_old.md/"); \
+		git show $(tag):$$file > out/$$OLD; \
+		OLD_FILES="$$OLD_FILES out/$$OLD"; \
+	done
+	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
+	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
+	DIFFNAME=out/diff_$$(echo $(tag) | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"> $$DIFFNAME
+	pdflatex $(pdflatex_args) $$DIFFNAME
+	pdflatex $(pdflatex_args) $$DIFFNAME
+
 clean:
 	rm -f out/*.log out/*.aux out/*.out out/*.tdo out/*.toc out/*_old.tex out/*_new.tex out/*_old.md out/diff_*.tex
 
 timediff: _ensure_folder _make_timediff clean
 
 diff: _ensure_folder _make_diff clean
+
+tagdiff: _ensure_folder _make_tagdiff clean
 
 tex: _ensure_folder _md_to_tex
 
