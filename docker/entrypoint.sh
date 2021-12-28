@@ -1,4 +1,6 @@
 #!/bin/sh
+git config core.logAllRefUpdates true
+git reflog --date=local main
 make pdf
 make docx
 make diff depth=1
