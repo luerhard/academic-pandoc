@@ -45,6 +45,7 @@ WORKDIR /wrk
 RUN tlmgr update --self && \
     tlmgr install \
         appendix \
+        babel-german \
         beamer \
         booktabs \
         caption \
