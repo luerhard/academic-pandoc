@@ -33,7 +33,7 @@ _md_to_docx:
 	pandoc -o out/main.docx $(DOCX_FILTERS) --citeproc --reference-doc $(DOCX_TEMPLATE) $(MD_FILES)
 	
 _md_to_pdf:
-	pandoc -o out/main.pdf $(LATEX_FILTERS) --citeproc --template $(LATEX_TEMPLATE) $(MD_FILES)
+	pandoc -o out/main.pdf $(LATEX_FILTERS) --citeproc --metadata link-citations=true --template $(LATEX_TEMPLATE) $(MD_FILES)
 
 .ONESHELL:
 _make_diff:
