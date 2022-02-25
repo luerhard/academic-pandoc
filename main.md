@@ -138,8 +138,8 @@ Please use them with care, as they will most definitely break the docx document.
 
 ## Table of Contents
 
-The table of contents can be activated by setting `titlepage: true` in the header of `main.md`.
-To deactivate it, set `titlepage: false`.
+The table of contents can be activated by setting `toc: true` in the header of `main.md`.
+To deactivate it, set `toc: false`.
 
 ## Tables {#sec:tables}
 
@@ -181,8 +181,8 @@ Table @tbl:desc are named differently.
 
 ## Titlepage {#sec:titlepage}
 
-The table of contents can be activated by setting `toc: true` in the header of `main.md`.
-To deactivate it, set `toc: false`.
+The table of contents can be activated by setting `titlepage: true` in the header of `main.md`.
+To deactivate it, set `titlepage: false`.
 
 ## ToDo Notes {#sec:todos}
 
