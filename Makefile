@@ -45,7 +45,7 @@ _make_diff:
 	done
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
-	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"> out/diff_$(depth)_commits.tex
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author" --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*"> out/diff_$(depth)_commits.tex
 	pdflatex $(pdflatex_args) out/diff_$(depth)_commits.tex
 	pdflatex $(pdflatex_args) out/diff_$(depth)_commits.tex
 
@@ -60,7 +60,7 @@ _make_timediff:
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
 	DIFFNAME=out/diff_$$(echo $$at | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
-	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"> $$DIFFNAME
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author|\caption" --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*"> $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 
@@ -75,7 +75,7 @@ _make_tagdiff:
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
 	DIFFNAME=out/diff_$$(echo $(tag) | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
-	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"> $$DIFFNAME
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"  --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" > $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 
