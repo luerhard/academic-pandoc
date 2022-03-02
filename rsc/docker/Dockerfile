@@ -56,9 +56,10 @@ RUN tlmgr update --self && \
         multirow \
         epstopdf \
         fancyvrb \
-        framed \
         float \
         flowchart \
+        footmisc \
+        framed \
         latexdiff \
         latexmk \
         listings \

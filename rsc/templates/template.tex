@@ -24,16 +24,17 @@ $endif$
 \usepackage{longtable}
 \usepackage{authblk}
 \usepackage{setspace}
+\usepackage[hang]{footmisc}
 
-\setlength{\marginparwidth }{2cm}
-\usepackage[textwidth=4.5cm, tickmarkheight=0.2cm, textsize=footnotesize]{todonotes}
+\setlength{\marginparwidth}{2cm}
+\usepackage[textwidth=3.5cm, tickmarkheight=0.2cm, textsize=footnotesize]{todonotes}
 \floatplacement{figure}{$if(float-placement-figure)$$float-placement-figure$$else$H$endif$}
 
 \usepackage[
 left=2cm,
-right=5cm,
+right=4cm,
 top=3cm,
-bottom=3cm
+bottom=2cm
 %marginparwidth=125pt,
 %marginparsep=5mm,
 ]{geometry}
@@ -55,13 +56,20 @@ $if(csl-refs)$
 \input{rsc/templates/csl-style}
 $endif$ 
 
-%Minimum Anteil für eine Float-Only Page (Standard .6)
+%Minimum fraction for a Float-Only Page (Standard .6)
 \renewcommand{\floatpagefraction}{.3}
-\renewcommand{\textfraction}{.4} 
+\renewcommand{\textfraction}{.4}
+
+% space between footnote number and text
+\setlength{\footnotemargin}{2mm}
+%space between footnotes and text body
+\addtolength{\footnotesep}{2mm}
 
 \clubpenalty10000
 \widowpenalty10000
 \displaywidowpenalty=10000
+% penalty for footnotes on multiple pages
+\interfootnotelinepenalty=1000
 
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
