@@ -35,9 +35,9 @@ RUN wget https://mirror.clientvps.com/CTAN/systems/texlive/tlnet/install-tl-unx.
 ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
 
 # install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-1-amd64.deb; \
-    dpkg -i pandoc-2.16.2-1-amd64.deb; \
-    rm pandoc-2.16.2-1-amd64.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-1-amd64.deb; \
+    dpkg -i pandoc-2.17.1.1-1-amd64.deb; \
+    rm pandoc-2.17.1.1-1-amd64.deb
     
 WORKDIR /wrk
 
@@ -68,5 +68,6 @@ RUN tlmgr update --self && \
         setspace \
         tabulary \
         textpos \
+        titlesec \
         todonotes \
         ulem

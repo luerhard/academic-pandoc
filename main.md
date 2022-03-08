@@ -194,6 +194,19 @@ The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
 \todo[author=MM]{This needs to be changed}
 \todo[author=KU]{I'm on it}
 
+## Sections {#sec:sections}
+
+Sections are numbered and included into the toc up to a depth of 3.
+
+#### Markdown headers of depth 4 
+
+are unnumbered paragraph headers (followed by a newline) as seen above 
+
+##### headers of depth 5 
+
+are inlined paragraph titles (bold at the start of the paragraph).
+
+
 ## Section References {#sec:links-to-sections}
 
 Similiar to links to figures (see Section @sec:figures), sections can be referenced.

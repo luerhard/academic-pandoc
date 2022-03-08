@@ -16,6 +16,7 @@ from panflute import Caption
 from panflute import Space
 from panflute import Image
 from panflute import Strong
+from panflute import Plain
 from panflute import run_filters
 import numpy as np
 
@@ -45,6 +46,8 @@ LATEX_SECTION_MAPPER = {
     1: r"\section",
     2: r"\subsection",
     3: r"\subsubsection",
+    4: r"\paragraph",
+    5: r"\subparagraph",
 }
 
 
@@ -260,15 +263,16 @@ def set_targets(elem, doc):
             return elem
         level = elem.level
         id_ = elem.identifier
-
-        if level > 3:
-            raise Exception("Do not use Headers with level > 3")
+        
+        if level > 5:
+            raise Exception("Do not use Headers with level > 5")
 
         if in_appendix(elem):
             type_ = "appendix"
         else:
             type_ = "section"
-
+        
+        
         SECTIONS.add_section(id_, level, type_)
 
         if doc.format == "latex":
@@ -281,12 +285,28 @@ def set_targets(elem, doc):
             return content
 
         if doc.format == "docx":
-            elem.content = [
-                Str(SECTIONS.find_section(elem.identifier)),
-                Space,
-                Space,
-                *elem.content,
-            ]
+            if level <= 3:
+                elem.content = [
+                    Str(SECTIONS.find_section(elem.identifier)),
+                    Space,
+                    Space,
+                    *elem.content,
+                ]
+            elif level == 4:
+                # handle unnumbered header 4 sections
+                elem.content = [
+                    *elem.content,
+                ]
+            else:
+                # handle inline paragraph sections (header 5)
+                merged = elem.next
+                merged.content = [
+                    Strong(*elem.content),
+                    Space,
+                    *merged.content
+                ]
+                return []
+                
             return elem
 
     elif isinstance(elem, Image):

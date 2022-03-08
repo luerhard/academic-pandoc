@@ -14,6 +14,20 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+% let paragraph be unnumbered section 4 headings
+\usepackage{titlesec}
+\titleformat{\paragraph}[display]
+{\bfseries\filright}
+{}{}{}
+\titlespacing{\paragraph}
+{0ex}{*2}{0ex}
+
+\titleformat{\subparagraph}[runin]
+{\bfseries\filright}
+{}{}{}
+\titlespacing{\subparagraph}
+{0ex}{*2}{1ex}
+
 % caption numbers are created in crossref filter
 \usepackage{caption}
 \captionsetup{labelformat=empty}
