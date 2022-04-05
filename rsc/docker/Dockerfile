@@ -32,12 +32,12 @@ RUN wget https://mirror.clientvps.com/CTAN/systems/texlive/tlnet/install-tl-unx.
     rm -r /install-tl-unx; \
     rm install-tl-unx.tar.gz
 
-ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 
 # install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-1-amd64.deb; \
-    dpkg -i pandoc-2.17.1.1-1-amd64.deb; \
-    rm pandoc-2.17.1.1-1-amd64.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb; \
+    dpkg -i pandoc-2.18-1-amd64.deb; \
+    rm pandoc-2.18-1-amd64.deb
     
 WORKDIR /wrk
 
