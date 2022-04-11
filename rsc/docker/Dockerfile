@@ -49,6 +49,7 @@ RUN tlmgr update --self && \
         beamer \
         booktabs \
         caption \
+        changebar \
         cm-super \
         collection-fontsrecommended \
         csquotes \

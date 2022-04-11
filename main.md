@@ -237,16 +237,16 @@ Once installed, all commands can be run follwing this scheme:
 
 ```bash
 # to create a pdf on Linux or Mac
-docker run --rm -v $(pwd):/wrk lerhard/pandoc:2.18.1-1 make pdf
+docker run --rm -v $(pwd):/wrk lerhard/pandoc:2.18-2 make pdf
 
 # to create a pdf on PowerShell, it might be necessary to write:
-docker run --rm -v ${PWD}:/wrk lerhard/pandoc:2.18.1-1 make pdf
+docker run --rm -v ${PWD}:/wrk lerhard/pandoc:2.18-2 make pdf
 
 # for Windows Command Line, use
-docker run --rm -v %cd%:/wrk lerhard/pandoc:2.18.1-1 make pdf
+docker run --rm -v %cd%:/wrk lerhard/pandoc:2.18-2 make pdf
 ```
 
-If you want to use a newer container, check [https://hub.docker.com/r/lerhard/pandoc](https://hub.docker.com/r/lerhard/pandoc) for new container releases and update the tag (`2.18.1-1` in this case).
+If you want to use a newer container, check [https://hub.docker.com/r/lerhard/pandoc](https://hub.docker.com/r/lerhard/pandoc) for new container releases and update the tag (`2.18-2` in this case).
 
 ## pdf
 

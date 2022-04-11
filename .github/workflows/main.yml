@@ -17,7 +17,7 @@ jobs:
           ref: main
 
       - name: Create PDF
-        uses: docker://lerhard/pandoc:2.18.1-1
+        uses: docker://lerhard/pandoc:2.18-2
         with:
           entrypoint: "rsc/docker/entrypoint.sh"
 
