@@ -45,7 +45,7 @@ _make_diff:
 	done
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
-	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author" --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" -t CCHANGEBAR --append-safecmd=enquote > out/diff_$(depth)_commits.tex
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author" --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" -t CCHANGEBAR --append-safecmd="(enquote|enquote\*)" > out/diff_$(depth)_commits.tex
 	pdflatex $(pdflatex_args) out/diff_$(depth)_commits.tex
 	pdflatex $(pdflatex_args) out/diff_$(depth)_commits.tex
 
@@ -60,7 +60,7 @@ _make_timediff:
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
 	DIFFNAME=out/diff_$$(echo $$at | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
-	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author|\caption" --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" -t CCHANGEBAR --append-safecmd=enquote > $$DIFFNAME
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author|\caption" --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" -t CCHANGEBAR --append-safecmd="(enquote|enquote\*)" > $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 
@@ -75,12 +75,12 @@ _make_tagdiff:
 	pandoc -o out/main_old.tex ${md_to_tex_args} $$OLD_FILES
 	pandoc -o out/main_new.tex ${md_to_tex_args} $(MD_FILES)
 	DIFFNAME=out/diff_$$(echo $(tag) | sed s"/[[:space:]]/_/g" | sed s"/\:/-/g").tex
-	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"  --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" -t CCHANGEBAR --append-safecmd=enquote > $$DIFFNAME
+	latexdiff out/main_old.tex out/main_new.tex --replace-context2cmd="\author"  --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular|longtable)[\w\d*@]*" -t CCHANGEBAR --append-safecmd="(enquote|enquote\*)" > $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 	pdflatex $(pdflatex_args) $$DIFFNAME
 
 clean:
-	rm -f out/*.log out/*.aux out/*.out out/*.tdo out/*.toc out/*_old.tex out/*_new.tex out/*_old.md out/diff_*.tex
+	rm -f out/*.log out/*.aux out/*.out out/*.tdo out/*.toc out/*_old.tex out/*_new.tex out/*_old.md out/diff_*.tex out/*.cb out/*.cb2
 
 timediff: _ensure_folder _make_timediff clean
 
