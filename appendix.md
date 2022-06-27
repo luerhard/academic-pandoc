@@ -69,4 +69,11 @@ markdown: true
 ```
 
 ![A cat in the appendix](rsc/images/cat.jpg){#fig:catpic_B width=75%}
+
+
+
+# Last appendix
+
+This is my last appendix.
+
 :::::
