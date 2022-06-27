@@ -16,14 +16,13 @@ from panflute import Caption
 from panflute import Space
 from panflute import Image
 from panflute import Strong
-from panflute import Plain
 from panflute import run_filters
 import numpy as np
 
 # for debugging uncomment and use logger.
-import logging
-logging.basicConfig(filename="crossref.txt", filemode="w")
-logger = logging.getLogger()
+# import logging
+# logging.basicConfig(filename="crossref.txt", filemode="w")
+# logger = logging.getLogger()
 
 # Set valid identifiers for links in your Markdown document
 TABLE_IDENTIFIER = "tbl:"
@@ -92,7 +91,6 @@ class SectionReference:
             self.section_counter[level:] = 0
             self.sections[id_] = list(self.section_counter)
         elif type_ == "appendix":
-            logger.warning("level_ix: %s - level %s, id_ %s \n %s\n%s", _level_ix, level, id_, self.appendix_counter, self.appendix)
             self.appendix_counter[_level_ix] += 1
             self.appendix_counter[level:] = 0
             self.appendix[id_] = list(self.appendix_counter)
