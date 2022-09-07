@@ -35,9 +35,9 @@ RUN wget https://mirror.clientvps.com/CTAN/systems/texlive/tlnet/install-tl-unx.
 ENV PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 
 # install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb; \
-    dpkg -i pandoc-2.18-1-amd64.deb; \
-    rm pandoc-2.18-1-amd64.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb; \
+    dpkg -i pandoc-2.19.2-1-amd64.deb; \
+    rm pandoc-2.19.2-1-amd64.deb
     
 WORKDIR /wrk
 
@@ -48,18 +48,23 @@ RUN tlmgr update --self && \
         babel-german \
         beamer \
         booktabs \
+        cantarell \
         caption \
         changebar \
         cm-super \
         collection-fontsrecommended \
+        collection-xetex \
         csquotes \
         makeshape \
         multirow \
+        environ \
         epstopdf \
         fancyvrb \
         float \
         flowchart \
         footmisc \
+        fontaxes \
+        fontspec \
         framed \
         latexdiff \
         latexmk \
@@ -68,7 +73,13 @@ RUN tlmgr update --self && \
         sfmath \
         setspace \
         tabulary \
+        tabu \
+        tcolorbox \
         textpos \
         titlesec \
         todonotes \
-        ulem
+        ulem \
+        unicode-math \
+        xltxtra
+
+RUN tlmgr install fontspec
