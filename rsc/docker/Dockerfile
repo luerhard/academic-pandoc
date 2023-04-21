@@ -83,4 +83,4 @@ RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-am
     dpkg -i pandoc-3.1.2-1-amd64.deb; \
     rm pandoc-3.1.2-1-amd64.deb
 
-RUN git config --global safe.directory '*'
+RUN git config --global safe.directory "/wrk"
