@@ -115,6 +115,8 @@ This can be referenced using the tag Figure @fig:timeline.
 Currently, .eps, .jpg, and .png files are supported.
 Figures in the Appendix are numbered differently as you can see with @fig:catpic_A from Appendix @ap:super_important or Figure @fig:catpic_B from Appendix @ap:subsub.
 
+Be aware that complex figure, a new feature in pandoc 3, have not been fully implemented yet and might lead to unwanted behavior.
+
 ## Footnotes {#sec:footnotes}
 
 [^key]: Content of footnote.
