@@ -17,6 +17,11 @@ jobs:
           fetch-depth: 0
           ref: main
 
+      - name: Set ownership
+        run: |
+          # this is to fix GIT not liking owner of the checkout dir
+          chown -R $(id -u):$(id -g) $PWD
+
       - name: Create PDF
         uses: docker://lerhard/pandoc:3.1.2-3
         with:
