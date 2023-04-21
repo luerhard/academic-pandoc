@@ -32,13 +32,7 @@ RUN wget https://mirror.clientvps.com/CTAN/systems/texlive/tlnet/install-tl-unx.
     rm -r /install-tl-unx; \
     rm install-tl-unx.tar.gz
 
-ENV PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
-
-# install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb; \
-    dpkg -i pandoc-2.19.2-1-amd64.deb; \
-    rm pandoc-2.19.2-1-amd64.deb
-    
+ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:${PATH}"
 WORKDIR /wrk
 
 # Install latex packages
@@ -83,3 +77,8 @@ RUN tlmgr update --self && \
         xltxtra
 
 RUN tlmgr install fontspec
+
+# install pandoc
+RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb; \
+    dpkg -i pandoc-3.1.2-1-amd64.deb; \
+    rm pandoc-3.1.2-1-amd64.deb

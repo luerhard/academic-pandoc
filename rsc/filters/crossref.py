@@ -1,23 +1,22 @@
+import sys
+import textwrap
 from collections import defaultdict
 from string import ascii_lowercase
-import textwrap
-import sys
-
 from typing import List
 
+import numpy as np
+from panflute import Caption
+from panflute import Cite
+from panflute import Figure
 from panflute import Header
 from panflute import Link
-from panflute import Str
-from panflute import RawInline
-from panflute import Cite
 from panflute import Para
-from panflute import Table
-from panflute import Caption
+from panflute import RawInline
 from panflute import Space
-from panflute import Image
+from panflute import Str
 from panflute import Strong
+from panflute import Table
 from panflute import run_filters
-import numpy as np
 
 # for debugging uncomment and use logger.
 # import logging
@@ -262,7 +261,7 @@ def set_targets(elem, doc):
             return elem
         level = elem.level
         id_ = elem.identifier
-        
+
         if level > 5:
             raise Exception("Do not use Headers with level > 5")
 
@@ -270,8 +269,7 @@ def set_targets(elem, doc):
             type_ = "appendix"
         else:
             type_ = "section"
-        
-        
+
         SECTIONS.add_section(id_, level, type_)
 
         if doc.format == "latex":
@@ -299,22 +297,26 @@ def set_targets(elem, doc):
             else:
                 # handle inline paragraph sections (header 5)
                 merged = elem.next
-                merged.content = [
-                    Strong(*elem.content),
-                    Space,
-                    *merged.content
-                ]
+                merged.content = [Strong(*elem.content), Space, *merged.content]
                 return []
-                
+
             return elem
 
-    elif isinstance(elem, Image):
+    elif isinstance(elem, Figure):
         FIGURES.add_item(elem)
-
         # set number for caption
         fign = FIGURES.find_item(elem.identifier)
         ref = FIGURE_PREFIX(fign)
-        elem.content = [ref, *elem.content]
+        caption = elem.caption.content[0]
+
+        try:
+            para = elem.caption.content[0]
+        except IndexError:
+            para = Para()
+        caption = para.content
+        caption = [ref, *caption]
+
+        elem.caption = Caption(Para(*caption))
 
         return elem
 
