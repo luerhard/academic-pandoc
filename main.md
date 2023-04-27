@@ -97,12 +97,12 @@ Tables (cf. Section @sec:tables) and Figures (cf. Section @sec:figures) in  Appe
 ## Citations {#sec:citations}
 
 Citations are stored in `rsc/library/references.json`.
-
 They can be used as in-text with: @boswell:MigrationEuropepaper.2005 or in parentheses with [@boswell:MigrationEuropepaper.2005].
-
 The style for the references is a CSL Stylesheet in `rsc/library/style.csl`. It defaults to APA7.
-
 Both paths can be changed in the header of `main.md`.
+
+Due to the fact that CSL still does not allow separate behavior for in-text citations, there is a manual filter here that converts the "&" symbol to "and". Although this is not particularly elegant, it is currently the best solution available. The word to be inserted can be adjusted in the corresponding filter at the top to match the language. If the filter should not be applied, it must be removed from the Makefile.
+This filter makes it that the inline citation by @blumenau:NeverLetGood.2018 has the correct word, whereas the normal citation contains an ampersand [@blumenau:NeverLetGood.2018].
 
 
 ## Figures {#sec:figures}

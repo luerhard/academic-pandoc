@@ -40,7 +40,7 @@ markdown: true
 
 # New appendix {#ap:B}
 
-My super important descriptives! I want to cite here: @blumenau:NeverLetGood.2018
+<!-- My super important descriptives! I want to cite here: @blumenau:NeverLetGood.2018 -->
 
 ![A cat in the appendix](rsc/images/cat.jpg){#fig:catpic_B_small width=5%}
 
