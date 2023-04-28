@@ -40,8 +40,23 @@ $endif$
 \usepackage{setspace}
 \usepackage[hang]{footmisc}
 
+
+%create comment fields in todonotes
+
 \setlength{\marginparwidth}{2cm}
 \usepackage[textwidth=3.5cm, tickmarkheight=0.2cm, textsize=footnotesize]{todonotes}
+
+\newcounter{comment}
+\newcommand{\comment}[2][]{%
+% initials of the author (optional) + note in the margin
+\refstepcounter{comment}%
+{%
+\setstretch{0.7}% spacing
+\todo[color={red!100!green!33},size=\footnotesize]{%
+\textbf{[\uppercase{#1}\thecomment]:}~#2}%
+}}
+
+
 \floatplacement{figure}{$if(float-placement-figure)$$float-placement-figure$$else$H$endif$}
 
 \usepackage[
@@ -89,6 +104,7 @@ $endif$
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
 
 \MSonehalfspacing
 

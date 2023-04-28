@@ -188,13 +188,21 @@ To deactivate it, set `titlepage: false`.
 
 ## ToDo Notes {#sec:todos}
 
-Classical Latex ToDo-Notes are also possible.
-Note, however, that those will not show up in the docx Version of the Document.
+### create todos
+
+Additionally, there is the option to create classic LaTeX todonotes. However, they will only be displayed in the PDF version of the document and not in the docx version.
+For comments, the code snippet from the todonotes documentation has also been inserted, allowing for comments to be inserted with `\comment[KU]{This is an important comment}`.\comment[KU]{This is an important comment}
 
 Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 1 Mio BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
 The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 \todo[author=MM]{This needs to be changed}
 \todo[author=KU]{I'm on it}
+
+### show a list of todos
+
+`\listoftodos` shows a list of all todos in the document and links them.
+
+\listoftodos
 
 ## Sections {#sec:sections}
 
