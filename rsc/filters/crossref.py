@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import sys
 import textwrap
 from collections import defaultdict

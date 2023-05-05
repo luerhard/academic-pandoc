@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from collections import defaultdict
 from os import access
 from string import ascii_lowercase

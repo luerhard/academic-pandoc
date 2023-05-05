@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from panflute import run_filter
 from panflute import Citation
 from panflute import Str

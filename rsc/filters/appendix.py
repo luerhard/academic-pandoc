@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/python
+
 from panflute import Div
 from panflute import RawBlock, RawInline
 import textwrap

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from pathlib import Path
 import re
 import sys
