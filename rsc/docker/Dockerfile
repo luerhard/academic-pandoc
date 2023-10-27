@@ -49,6 +49,7 @@ RUN tlmgr update --self && \
         collection-fontsrecommended \
         collection-xetex \
         csquotes \
+        enumitem \
         makeshape \
         multirow \
         environ \
@@ -64,6 +65,7 @@ RUN tlmgr update --self && \
         latexmk \
         listings \
         preprint \
+        ragged2e \
         sfmath \
         setspace \
         tabulary \
@@ -79,8 +81,8 @@ RUN tlmgr update --self && \
 RUN tlmgr install fontspec
 
 # install pandoc
-RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb; \
-    dpkg -i pandoc-3.1.2-1-amd64.deb; \
-    rm pandoc-3.1.2-1-amd64.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-1-amd64.deb; \
+    dpkg -i pandoc-3.1.8-1-amd64.deb; \
+    rm pandoc-3.1.8-1-amd64.deb
 
 RUN git config --global safe.directory "/wrk"

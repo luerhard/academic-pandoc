@@ -75,12 +75,30 @@ bottom=2cm
 
 
 $if(csl-refs)$
-\newlength{\cslhangindent}
-\newlength{\cslparskip}
 
-% Set References Layout here:
-\setlength{\cslhangindent}{1em}
-\setlength{\cslparskip}{1em}
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+% avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslparskip}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacing}
+\setlength{\cslentryspacing}{0em}
+\usepackage{enumitem}
+\newlist{biblist}{itemize}{1}
+\setlist[biblist]{label={},leftmargin=\cslhangindent,itemindent=-1\cslhangindent,itemsep=\cslentryspacing}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \input{rsc/templates/csl-style}
 $endif$ 

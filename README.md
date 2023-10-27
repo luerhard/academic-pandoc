@@ -8,16 +8,16 @@
 
 ```bash
 # to create a pdf on Linux or Mac
-docker run --rm -v $(pwd):/wrk lerhard/pandoc:3.1.2-1 make pdf
+docker run --rm -v $(pwd):/wrk lerhard/pandoc:3.1.8-1 make pdf
 
 # to create a pdf on PowerShell (Windows) it might be necessary to write:
-docker run --rm -v ${PWD}:/wrk lerhard/pandoc:3.1.2-1 make pdf
+docker run --rm -v ${PWD}:/wrk lerhard/pandoc:3.1.8-1 make pdf
 
 # for Windows Command Line, use
-docker run --rm -v %cd%:/wrk lerhard/pandoc:3.1.2-1 make pdf
+docker run --rm -v %cd%:/wrk lerhard/pandoc:3.1.8-1 make pdf
 
 # create custom diff (where 5 is an arbitrary number of commits)
-docker run --rm -v $(pwd):/wrk lerhard/pandoc:3.1.2-1 make diff depth=5
+docker run --rm -v $(pwd):/wrk lerhard/pandoc:3.1.8-1 make diff depth=5
 ```
 
 # Features and documentation
