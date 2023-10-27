@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[hidelinks]{hyperref}
+\usepackage{fancyvrb}
+\usepackage[hidelinks,unicode=true]{hyperref}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -38,8 +39,6 @@ $endif$
 \usepackage{longtable}
 \usepackage{authblk}
 \usepackage{setspace}
-\usepackage[hang]{footmisc}
-
 
 %create comment fields in todonotes
 
@@ -115,10 +114,15 @@ $endif$
 \renewcommand{\floatpagefraction}{.3}
 \renewcommand{\textfraction}{.4}
 
-% space between footnote number and text
-\setlength{\footnotemargin}{2mm}
-%space between footnotes and text body
-\addtolength{\footnotesep}{2mm}
+%footnote settings
+\VerbatimFootnotes
+
+\makeatletter%
+\long\def\@makefntext#1{%
+  \parindent 1em\noindent \hb@xt@ 1.8em{\hss \@makefnmark}\hskip1mm\relax#1}%
+\makeatother
+
+\addtolength{\footskip}{10mm}
 
 \clubpenalty10000
 \widowpenalty10000
@@ -130,7 +134,6 @@ $endif$
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-
 
 \MSonehalfspacing
 

@@ -53,6 +53,7 @@ RUN tlmgr update --self && \
         makeshape \
         microtype \
         multirow \
+        nameref \
         environ \
         epstopdf \
         fancyvrb \
