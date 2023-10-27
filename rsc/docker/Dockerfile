@@ -51,6 +51,7 @@ RUN tlmgr update --self && \
         csquotes \
         enumitem \
         makeshape \
+        microtype \
         multirow \
         environ \
         epstopdf \
@@ -64,6 +65,7 @@ RUN tlmgr update --self && \
         latexdiff \
         latexmk \
         listings \
+        parskip \
         preprint \
         ragged2e \
         sfmath \
